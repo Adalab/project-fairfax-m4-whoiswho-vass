@@ -35,14 +35,33 @@ const employeeArr = [
 ]
 
 class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      filterName: '',
+      filterSn: ''
+    }
+    this.handleFilter = this.handleFilter.bind(this);
+  }
+
+  handleFilter(event) {
+    const currentValue = event.currentTarget.value;
+    this.setState({filterName : currentValue});
+  }
+
   render() {
     return (
       <div className="App">
+        <label htmlFor="filterEmployee">Campo de búsqueda</label>
+        <input onChange={this.handleFilter} name="filterEmployee" id="filterEmployee" type="text"/>
         <ul className="employee__list">
-          {employeeArr
-            .map(item => 
-              <li className="employee__list--item">{item.givenName} {item.sn}</li>
-              )
+          {employeeArr 
+              .filter(item => item.givenName.includes(this.state.filterName))
+              // .filter(item => item.sn.includes(this.state.filterName))
+              .map(item => 
+                <li className="employee__list--item">{item.givenName} {item.sn}</li>
+                )
           }  
         </ul>
       </div>
