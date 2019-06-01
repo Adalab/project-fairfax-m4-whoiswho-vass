@@ -181,8 +181,8 @@ class App extends React.Component {
                   <i className="fas fa-chevron-down"></i>
                 </div>
                   {collapsibleId === item.id
-                    ? arrDetail.map(item => (
-                        <div className="employee__detail">
+                    ? arrDetail.map((item, index) => (
+                        <div className="employee__detail" key={index}>
                           <p>Empresa: {item.company}</p>
                           <p>Región: {item.physicalDeliveryOfficeName}</p>
                           <p>
