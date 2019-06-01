@@ -34,6 +34,18 @@ const employeeArr = [
   }
 ];
 
+const arrDetail = [
+  {
+    "physicalDeliveryOfficeName": "Madrid",
+    "telephoneNumber": "662025543",
+    "distinguishedName": "CN=Francisco Javier Pérez García,OU=Tailor-Made Solutions,OU=Delivery,OU=Vass Madrid,OU=VASS,DC=VASS,DC=INET",
+    "department": "EST SOL,PROC&INT.MAD",
+    "company": "VASS",
+    "name": "Francisco Javier Pérez García",
+    "mail": "aranzazunarvaez@gmail.com"
+  }
+]
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -105,7 +117,13 @@ class App extends React.Component {
                   onClick={this.handleCollapsible}
                 >
                   {item.givenName} {item.sn}
-                  {collapsibleId === item.id ? <p>Hola</p> : null}
+                  {collapsibleId === item.id ?
+                    arrDetail.map(item => <div className="employee__detail">
+                      <p>Empresa: {item.company}</p>
+                      <p>Región: {item.physicalDeliveryOfficeName}</p>
+                      <p>Email: <a href={`mailto:${item.mail}`}>{item.mail}</a></p>
+                      <p>Tlf: <a href={`tel:${item.telephoneNumber}`}>{item.telephoneNumber}</a></p>
+                    </div>) : null}
                 </li>
               ))}
           </ul>
@@ -143,7 +161,13 @@ class App extends React.Component {
                   onClick={this.handleCollapsible}
                 >
                   {item.givenName} {item.sn}
-                  {collapsibleId === item.id ? <p>Hola</p> : null}
+                  {collapsibleId === item.id ?
+                    arrDetail.map(item => <div className="employee__detail">
+                      <p>Empresa: {item.company}</p>
+                      <p>Región: {item.physicalDeliveryOfficeName}</p>
+                      <p>Email: <a href={`mailto:${item.mail}`}>{item.mail}</a></p>
+                      <p>Tlf: <a href={`tel:${item.telephoneNumber}`}>{item.telephoneNumber}</a></p>
+                    </div>) : null}
                 </li>
               ))}
           </ul>
