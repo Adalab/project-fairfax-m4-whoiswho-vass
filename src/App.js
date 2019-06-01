@@ -84,6 +84,33 @@ class App extends React.Component {
           />
         </div>
       );
+    } else if (filterName === '*') {
+
+      return (
+        <div className="App">
+          <label htmlFor="filterEmployee">Campo de búsqueda</label>
+          <input
+            onChange={this.handleFilter}
+            name="filterEmployee"
+            id="filterEmployee"
+            type="text"
+          />
+          <ul className="employee__list">
+            {nameArr
+              .map(item => (
+                <li
+                  id={item.id}
+                  key={item.id}
+                  className="employee__list--item"
+                  onClick={this.handleCollapsible}
+                >
+                  {item.givenName} {item.sn}
+                  {collapsibleId === item.id ? <p>Hola</p> : null}
+                </li>
+              ))}
+          </ul>
+        </div>
+      );
     } else {
       return (
         <div className="App">
