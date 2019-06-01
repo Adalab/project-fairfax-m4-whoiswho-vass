@@ -49,7 +49,6 @@ class App extends React.Component {
     const newArr = employeeArr.map(item => {
       return { ...item };
     });
-    console.log(newArr);
     this.setState({ nameArr: newArr });
   }
 
@@ -71,9 +70,9 @@ class App extends React.Component {
         />
         <ul className="employee__list">
           {nameArr
-            .filter(item => `${item.givenName} ${item.sn}`.includes(filterName))
-            .map(item => (
-              <li className="employee__list--item">
+            .filter(item => `${item.givenName} ${item.sn}`.toLocaleLowerCase().includes(filterName.toLocaleLowerCase()))
+            .map((item, index) => (
+              <li key={index} className="employee__list--item">
                 {item.givenName} {item.sn}
               </li>
             ))}
