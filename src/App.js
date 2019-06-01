@@ -36,15 +36,16 @@ const employeeArr = [
 
 const arrDetail = [
   {
-    "physicalDeliveryOfficeName": "Madrid",
-    "telephoneNumber": "662025543",
-    "distinguishedName": "CN=Francisco Javier Pérez García,OU=Tailor-Made Solutions,OU=Delivery,OU=Vass Madrid,OU=VASS,DC=VASS,DC=INET",
-    "department": "EST SOL,PROC&INT.MAD",
-    "company": "VASS",
-    "name": "Francisco Javier Pérez García",
-    "mail": "aranzazunarvaez@gmail.com"
+    physicalDeliveryOfficeName: 'Madrid',
+    telephoneNumber: '662025543',
+    distinguishedName:
+      'CN=Francisco Javier Pérez García,OU=Tailor-Made Solutions,OU=Delivery,OU=Vass Madrid,OU=VASS,DC=VASS,DC=INET',
+    department: 'EST SOL,PROC&INT.MAD',
+    company: 'VASS',
+    name: 'Francisco Javier Pérez García',
+    mail: 'aranzazunarvaez@gmail.com'
   }
-]
+];
 
 class App extends React.Component {
   constructor(props) {
@@ -97,7 +98,6 @@ class App extends React.Component {
         </div>
       );
     } else if (filterName === '*') {
-
       return (
         <div className="App">
           <label htmlFor="filterEmployee">Campo de búsqueda</label>
@@ -108,24 +108,33 @@ class App extends React.Component {
             type="text"
           />
           <ul className="employee__list">
-            {nameArr
-              .map(item => (
-                <li
-                  id={item.id}
-                  key={item.id}
-                  className="employee__list--item"
-                  onClick={this.handleCollapsible}
-                >
-                  {item.givenName} {item.sn}
-                  {collapsibleId === item.id ?
-                    arrDetail.map(item => <div className="employee__detail">
-                      <p>Empresa: {item.company}</p>
-                      <p>Región: {item.physicalDeliveryOfficeName}</p>
-                      <p>Email: <a href={`mailto:${item.mail}`}>{item.mail}</a></p>
-                      <p>Tlf: <a href={`tel:${item.telephoneNumber}`}>{item.telephoneNumber}</a></p>
-                    </div>) : null}
-                </li>
-              ))}
+            {nameArr.map(item => (
+              <li
+                id={item.id}
+                key={item.id}
+                className="employee__list--item"
+                onClick={this.handleCollapsible}
+              >
+                {item.givenName} {item.sn}
+                {collapsibleId === item.id
+                  ? arrDetail.map(item => (
+                      <div className="employee__detail">
+                        <p>Empresa: {item.company}</p>
+                        <p>Región: {item.physicalDeliveryOfficeName}</p>
+                        <p>
+                          Email: <a href={`mailto:${item.mail}`}>{item.mail}</a>
+                        </p>
+                        <p>
+                          Tlf:{' '}
+                          <a href={`tel:+34${item.telephoneNumber}`}>
+                            {item.telephoneNumber}
+                          </a>
+                        </p>
+                      </div>
+                    ))
+                  : null}
+              </li>
+            ))}
           </ul>
         </div>
       );
@@ -161,13 +170,24 @@ class App extends React.Component {
                   onClick={this.handleCollapsible}
                 >
                   {item.givenName} {item.sn}
-                  {collapsibleId === item.id ?
-                    arrDetail.map(item => <div className="employee__detail">
-                      <p>Empresa: {item.company}</p>
-                      <p>Región: {item.physicalDeliveryOfficeName}</p>
-                      <p>Email: <a href={`mailto:${item.mail}`}>{item.mail}</a></p>
-                      <p>Tlf: <a href={`tel:${item.telephoneNumber}`}>{item.telephoneNumber}</a></p>
-                    </div>) : null}
+                  {collapsibleId === item.id
+                    ? arrDetail.map(item => (
+                        <div className="employee__detail">
+                          <p>Empresa: {item.company}</p>
+                          <p>Región: {item.physicalDeliveryOfficeName}</p>
+                          <p>
+                            Email:{' '}
+                            <a href={`mailto:${item.mail}`}>{item.mail}</a>
+                          </p>
+                          <p>
+                            Tlf:{' '}
+                            <a href={`tel:${item.telephoneNumber}`}>
+                              {item.telephoneNumber}
+                            </a>
+                          </p>
+                        </div>
+                      ))
+                    : null}
                 </li>
               ))}
           </ul>
