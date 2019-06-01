@@ -59,6 +59,19 @@ class App extends React.Component {
 
   render() {
     const { nameArr, filterName } = this.state;
+    if (filterName === '') {
+      return (
+        <div className="App">
+          <label htmlFor="filterEmployee">Campo de búsqueda</label>
+          <input
+            onChange={this.handleFilter}
+            name="filterEmployee"
+            id="filterEmployee"
+            type="text"
+          />{' '}
+        </div>
+      );
+    }
     return (
       <div className="App">
         <label htmlFor="filterEmployee">Campo de búsqueda</label>
@@ -70,7 +83,18 @@ class App extends React.Component {
         />
         <ul className="employee__list">
           {nameArr
-            .filter(item => `${item.givenName} ${item.sn}`.toLocaleLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(filterName.toLocaleLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")))
+            .filter(item =>
+              `${item.givenName} ${item.sn}`
+                .toLocaleLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .includes(
+                  filterName
+                    .toLocaleLowerCase()
+                    .normalize('NFD')
+                    .replace(/[\u0300-\u036f]/g, '')
+                )
+            )
             .map((item, index) => (
               <li key={index} className="employee__list--item">
                 {item.givenName} {item.sn}
