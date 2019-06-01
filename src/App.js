@@ -70,7 +70,7 @@ class App extends React.Component {
         />
         <ul className="employee__list">
           {nameArr
-            .filter(item => `${item.givenName} ${item.sn}`.toLocaleLowerCase().includes(filterName.toLocaleLowerCase()))
+            .filter(item => `${item.givenName} ${item.sn}`.toLocaleLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(filterName.toLocaleLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")))
             .map((item, index) => (
               <li key={index} className="employee__list--item">
                 {item.givenName} {item.sn}
