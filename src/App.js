@@ -39,15 +39,17 @@ class App extends React.Component {
     super(props);
     this.state = {
       nameArr: [],
-      filterName: ''
+      filterName: '',
+      collapsibleId: null
     };
 
     this.handleFilter = this.handleFilter.bind(this);
+    this.handleCollapsible = this.handleCollapsible.bind(this);
   }
 
   componentDidMount() {
-    const newArr = employeeArr.map(item => {
-      return { ...item };
+    const newArr = employeeArr.map((item, index) => {
+      return { ...item, id: index };
     });
     this.setState({ nameArr: newArr });
   }
@@ -57,8 +59,19 @@ class App extends React.Component {
     this.setState({ filterName: currentValue });
   }
 
+  handleCollapsible(event) {
+    const newCollapsibleId = event.currentTarget.id;
+    this.setState(prevState => {
+      if(parseInt(newCollapsibleId) === prevState.collapsibleId) {
+        return {collapsibleId: null}
+      } else {
+        return {collapsibleId: parseInt(newCollapsibleId)}
+      }
+    })
+  }
+
   render() {
-    const { nameArr, filterName } = this.state;
+    const { nameArr, filterName, collapsibleId } = this.state;
     return (
       <div className="App">
         <label htmlFor="filterEmployee">Campo de búsqueda</label>
@@ -71,9 +84,10 @@ class App extends React.Component {
         <ul className="employee__list">
           {nameArr
             .filter(item => `${item.givenName} ${item.sn}`.toLocaleLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(filterName.toLocaleLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")))
-            .map((item, index) => (
-              <li key={index} className="employee__list--item">
+            .map(item => (
+              <li id={item.id} key={item.id} className="employee__list--item" onClick={this.handleCollapsible}>
                 {item.givenName} {item.sn}
+                {collapsibleId === item.id ? <p>Hola</p> : null}
               </li>
             ))}
         </ul>
