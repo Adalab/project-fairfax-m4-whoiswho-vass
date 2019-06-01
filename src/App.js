@@ -116,9 +116,10 @@ class App extends React.Component {
                   id={item.id}
                 >
                   <h2 className="item__name">
-                    {' '}
-                    {item.givenName} {item.sn}{' '}
+                    
+                    {item.givenName} {item.sn}
                   </h2>
+                  <i className="fas fa-chevron-down"></i>
                 </div>
                 {collapsibleId === item.id
                   ? arrDetail.map((item, index) => (
@@ -129,7 +130,7 @@ class App extends React.Component {
                           Email: <a href={`mailto:${item.mail}`}>{item.mail}</a>
                         </p>
                         <p>
-                          Tlf:{' '}
+                          Tlf:
                           <a href={`tel:+34${item.telephoneNumber}`}>
                             {item.telephoneNumber}
                           </a>
@@ -167,24 +168,29 @@ class App extends React.Component {
                   )
               )
               .map(item => (
-                <li
-                  id={item.id}
-                  key={item.id}
-                  className="employee__list--item"
+                <li key={item.id} className="employee__list--item">
+                <div
+                  className="item__container"
                   onClick={this.handleCollapsible}
+                  id={item.id}
                 >
-                  {item.givenName} {item.sn}
+                  <h2 className="item__name">
+                    
+                    {item.givenName} {item.sn}
+                  </h2>
+                  <i className="fas fa-chevron-down"></i>
+                </div>
                   {collapsibleId === item.id
                     ? arrDetail.map(item => (
                         <div className="employee__detail">
                           <p>Empresa: {item.company}</p>
                           <p>Región: {item.physicalDeliveryOfficeName}</p>
                           <p>
-                            Email:{' '}
+                            Email:
                             <a href={`mailto:${item.mail}`}>{item.mail}</a>
                           </p>
                           <p>
-                            Tlf:{' '}
+                            Tlf:
                             <a href={`tel:${item.telephoneNumber}`}>
                               {item.telephoneNumber}
                             </a>
