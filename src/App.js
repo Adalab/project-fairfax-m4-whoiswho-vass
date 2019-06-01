@@ -109,16 +109,20 @@ class App extends React.Component {
           />
           <ul className="employee__list">
             {nameArr.map(item => (
-              <li
-                id={item.id}
-                key={item.id}
-                className="employee__list--item"
-                onClick={this.handleCollapsible}
-              >
-                {item.givenName} {item.sn}
+              <li key={item.id} className="employee__list--item">
+                <div
+                  className="item__container"
+                  onClick={this.handleCollapsible}
+                  id={item.id}
+                >
+                  <h2 className="item__name">
+                    {' '}
+                    {item.givenName} {item.sn}{' '}
+                  </h2>
+                </div>
                 {collapsibleId === item.id
-                  ? arrDetail.map(item => (
-                      <div className="employee__detail">
+                  ? arrDetail.map((item, index) => (
+                      <div className="employee__detail" key={index}>
                         <p>Empresa: {item.company}</p>
                         <p>Región: {item.physicalDeliveryOfficeName}</p>
                         <p>
