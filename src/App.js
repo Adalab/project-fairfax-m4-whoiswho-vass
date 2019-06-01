@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Login from './components/Login';
 
 const employeeArr = [
   {
@@ -53,11 +54,13 @@ class App extends React.Component {
     this.state = {
       nameArr: [],
       filterName: '',
-      collapsibleId: null
+      collapsibleId: null,
+      loginPassword: 'password'
     };
 
     this.handleFilter = this.handleFilter.bind(this);
     this.handleCollapsible = this.handleCollapsible.bind(this);
+    this.handlePassword = this.handlePassword.bind(this);
   }
 
   componentDidMount() {
@@ -83,127 +86,136 @@ class App extends React.Component {
     });
   }
 
+  handlePassword() {
+    this.setState(prevState => ({
+      loginPassword: prevState.loginPassword === 'password' ? 'text' : 'password'
+    }))
+  }
+
   render() {
-    const { nameArr, filterName, collapsibleId } = this.state;
-    if (filterName === '') {
-      return (
-        <div className="input__container">
-          <label htmlFor="filterEmployee">Campo de búsqueda</label>
-          <input
-            onChange={this.handleFilter}
-            name="filterEmployee"
-            id="filterEmployee"
-            type="text"
-          />
-        </div>
-      );
-    } else if (filterName === '*') {
-      return (
-        <div className="App">
-          <label htmlFor="filterEmployee">Campo de búsqueda</label>
-          <input
-            onChange={this.handleFilter}
-            name="filterEmployee"
-            id="filterEmployee"
-            type="text"
-          />
-          <ul className="employee__list">
-            {nameArr.map(item => (
-              <li key={item.id} className="employee__list--item">
-                <div
-                  className="item__container"
-                  onClick={this.handleCollapsible}
-                  id={item.id}
-                >
-                  <h2 className="item__name">
+    return(
+      <Login changePassword={this.handlePassword} passwordState={this.state.loginPassword}/>
+    );
+  //   const { nameArr, filterName, collapsibleId } = this.state;
+  //   if (filterName === '') {
+  //     return (
+  //       <div className="input__container">
+  //         <label htmlFor="filterEmployee">Campo de búsqueda</label>
+  //         <input
+  //           onChange={this.handleFilter}
+  //           name="filterEmployee"
+  //           id="filterEmployee"
+  //           type="text"
+  //         />
+  //       </div>
+  //     );
+  //   } else if (filterName === '*') {
+  //     return (
+  //       <div className="App">
+  //         <label htmlFor="filterEmployee">Campo de búsqueda</label>
+  //         <input
+  //           onChange={this.handleFilter}
+  //           name="filterEmployee"
+  //           id="filterEmployee"
+  //           type="text"
+  //         />
+  //         <ul className="employee__list">
+  //           {nameArr.map(item => (
+  //             <li key={item.id} className="employee__list--item">
+  //               <div
+  //                 className="item__container"
+  //                 onClick={this.handleCollapsible}
+  //                 id={item.id}
+  //               >
+  //                 <h2 className="item__name">
                     
-                    {item.givenName} {item.sn}
-                  </h2>
-                  <i className="fas fa-chevron-down"></i>
-                </div>
-                {collapsibleId === item.id
-                  ? arrDetail.map((item, index) => (
-                      <div className="employee__detail" key={index}>
-                        <p>Empresa: {item.company}</p>
-                        <p>Región: {item.physicalDeliveryOfficeName}</p>
-                        <p>
-                          Email: <a href={`mailto:${item.mail}`}>{item.mail}</a>
-                        </p>
-                        <p>
-                          Tlf:
-                          <a href={`tel:+34${item.telephoneNumber}`}>
-                            {item.telephoneNumber}
-                          </a>
-                        </p>
-                      </div>
-                    ))
-                  : null}
-              </li>
-            ))}
-          </ul>
-        </div>
-      );
-    } else {
-      return (
-        <div className="App">
-          <label htmlFor="filterEmployee">Campo de búsqueda</label>
-          <input
-            onChange={this.handleFilter}
-            name="filterEmployee"
-            id="filterEmployee"
-            type="text"
-          />
-          <ul className="employee__list">
-            {nameArr
-              .filter(item =>
-                `${item.givenName} ${item.sn}`
-                  .toLocaleLowerCase()
-                  .normalize('NFD')
-                  .replace(/[\u0300-\u036f]/g, '')
-                  .includes(
-                    filterName
-                      .toLocaleLowerCase()
-                      .normalize('NFD')
-                      .replace(/[\u0300-\u036f]/g, '')
-                  )
-              )
-              .map(item => (
-                <li key={item.id} className="employee__list--item">
-                <div
-                  className="item__container"
-                  onClick={this.handleCollapsible}
-                  id={item.id}
-                >
-                  <h2 className="item__name">
+  //                   {item.givenName} {item.sn}
+  //                 </h2>
+  //                 <i className="fas fa-chevron-down"></i>
+  //               </div>
+  //               {collapsibleId === item.id
+  //                 ? arrDetail.map((item, index) => (
+  //                     <div className="employee__detail" key={index}>
+  //                       <p>Empresa: {item.company}</p>
+  //                       <p>Región: {item.physicalDeliveryOfficeName}</p>
+  //                       <p>
+  //                         Email: <a href={`mailto:${item.mail}`}>{item.mail}</a>
+  //                       </p>
+  //                       <p>
+  //                         Tlf:
+  //                         <a href={`tel:+34${item.telephoneNumber}`}>
+  //                           {item.telephoneNumber}
+  //                         </a>
+  //                       </p>
+  //                     </div>
+  //                   ))
+  //                 : null}
+  //             </li>
+  //           ))}
+  //         </ul>
+  //       </div>
+  //     );
+  //   } else {
+  //     return (
+  //       <div className="App">
+  //         <label htmlFor="filterEmployee">Campo de búsqueda</label>
+  //         <input
+  //           onChange={this.handleFilter}
+  //           name="filterEmployee"
+  //           id="filterEmployee"
+  //           type="text"
+  //         />
+  //         <ul className="employee__list">
+  //           {nameArr
+  //             .filter(item =>
+  //               `${item.givenName} ${item.sn}`
+  //                 .toLocaleLowerCase()
+  //                 .normalize('NFD')
+  //                 .replace(/[\u0300-\u036f]/g, '')
+  //                 .includes(
+  //                   filterName
+  //                     .toLocaleLowerCase()
+  //                     .normalize('NFD')
+  //                     .replace(/[\u0300-\u036f]/g, '')
+  //                 )
+  //             )
+  //             .map(item => (
+  //               <li key={item.id} className="employee__list--item">
+  //               <div
+  //                 className="item__container"
+  //                 onClick={this.handleCollapsible}
+  //                 id={item.id}
+  //               >
+  //                 <h2 className="item__name">
                     
-                    {item.givenName} {item.sn}
-                  </h2>
-                  <i className="fas fa-chevron-down"></i>
-                </div>
-                  {collapsibleId === item.id
-                    ? arrDetail.map((item, index) => (
-                        <div className="employee__detail" key={index}>
-                          <p>Empresa: {item.company}</p>
-                          <p>Región: {item.physicalDeliveryOfficeName}</p>
-                          <p>
-                            Email:
-                            <a href={`mailto:${item.mail}`}>{item.mail}</a>
-                          </p>
-                          <p>
-                            Tlf:
-                            <a href={`tel:${item.telephoneNumber}`}>
-                              {item.telephoneNumber}
-                            </a>
-                          </p>
-                        </div>
-                      ))
-                    : null}
-                </li>
-              ))}
-          </ul>
-        </div>
-      );
-    }
+  //                   {item.givenName} {item.sn}
+  //                 </h2>
+  //                 <i className="fas fa-chevron-down"></i>
+  //               </div>
+  //                 {collapsibleId === item.id
+  //                   ? arrDetail.map((item, index) => (
+  //                       <div className="employee__detail" key={index}>
+  //                         <p>Empresa: {item.company}</p>
+  //                         <p>Región: {item.physicalDeliveryOfficeName}</p>
+  //                         <p>
+  //                           Email:
+  //                           <a href={`mailto:${item.mail}`}>{item.mail}</a>
+  //                         </p>
+  //                         <p>
+  //                           Tlf:
+  //                           <a href={`tel:${item.telephoneNumber}`}>
+  //                             {item.telephoneNumber}
+  //                           </a>
+  //                         </p>
+  //                       </div>
+  //                     ))
+  //                   : null}
+  //               </li>
+  //             ))}
+  //         </ul>
+  //       </div>
+  //     );
+  //   }
   }
 }
 
