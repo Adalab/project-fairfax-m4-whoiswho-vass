@@ -1,0 +1,19 @@
+.login__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #00BDEC;
+  height: 100vh;
+}
+
+.logo__img {
+  width: 216px;
+  height: 86.5px;
+  margin-top: 45px;
+}
+
+.inputs__container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 150px;
+}
