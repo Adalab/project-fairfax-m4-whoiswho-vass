@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import Login from './components/Login';
+import Search from './components/Search';
+import { Route, Switch } from 'react-router-dom';
 
 const employeeArr = [
   {
@@ -32,19 +34,6 @@ const employeeArr = [
     givenName: 'Javier',
     sn: 'Perez Garcia',
     sAMAccountName: 'jperez'
-  }
-];
-
-const arrDetail = [
-  {
-    physicalDeliveryOfficeName: 'Madrid',
-    telephoneNumber: '662025543',
-    distinguishedName:
-      'CN=Francisco Javier Pérez García,OU=Tailor-Made Solutions,OU=Delivery,OU=Vass Madrid,OU=VASS,DC=VASS,DC=INET',
-    department: 'EST SOL,PROC&INT.MAD',
-    company: 'VASS',
-    name: 'Francisco Javier Pérez García',
-    mail: 'aranzazunarvaez@gmail.com'
   }
 ];
 
@@ -96,10 +85,10 @@ class App extends React.Component {
   render() {
     const { nameArr, filterName, collapsibleId, loginPassword } = this.state;
     return (
-      <Login
-        changePassword={this.handlePassword}
-        passwordState={loginPassword}
-      />
+      <Switch>
+        <Route exact path="/" render={() => (<Login changePassword={this.handlePassword} passwordState={loginPassword} />)} />
+        <Route path="/search" component={() => (<Search filterName={filterName} nameArr={nameArr} collapsibleId={collapsibleId} />)} />
+      </Switch>
     );
     //   if (filterName === '') {
     //     return (
