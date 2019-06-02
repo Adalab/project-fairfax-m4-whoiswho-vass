@@ -15,18 +15,17 @@ const arrDetail = [
 
 class Search extends React.Component {
   render () {
-    const { filterName, nameArr, collapsibleId } = this.props;
-
+    const { filterName, nameArr, collapsibleId, handleFilter, handleCollapsible } = this.props;
     if (filterName === '') {
       return (
         <div className="input__container">
           <label htmlFor="filterEmployee">Campo de búsqueda</label>
           <input
-            onChange={this.handleFilter}
+            onChange={handleFilter}
             name="filterEmployee"
             id="filterEmployee"
             type="text"
-          />
+            />
         </div>
       );
     } else if (filterName === '*') {
@@ -34,19 +33,19 @@ class Search extends React.Component {
         <div className="App">
           <label htmlFor="filterEmployee">Campo de búsqueda</label>
           <input
-            onChange={this.handleFilter}
+            onChange={handleFilter}
             name="filterEmployee"
             id="filterEmployee"
             type="text"
-          />
+            />
           <ul className="employee__list">
             {nameArr.map(item => (
               <li key={item.id} className="employee__list--item">
                 <div
                   className="item__container"
-                  onClick={this.handleCollapsible}
+                  onClick={handleCollapsible}
                   id={item.id}
-                >
+                  >
                   <h2 className="item__name">
 
                     {item.givenName} {item.sn}
@@ -55,7 +54,7 @@ class Search extends React.Component {
                 </div>
                 {collapsibleId === item.id
                   ? arrDetail.map((item, index) => (
-                      <div className="employee__detail" key={index}>
+                    <div className="employee__detail" key={index}>
                         <p className="employee__detail--company">Empresa: <span className="employee__detail--company-span">{item.company}</span></p>
                         <p className="employee__detail--region">Región: <span className="employee__detail--region-span">{item.physicalDeliveryOfficeName}</span></p>
                         <p className="employee__detail--email">
@@ -68,7 +67,7 @@ class Search extends React.Component {
                         </p>
                       </div>
                     ))
-                  : null}
+                    : null}
               </li>
             ))}
           </ul>
@@ -79,7 +78,7 @@ class Search extends React.Component {
         <div className="App">
           <label htmlFor="filterEmployee">Campo de búsqueda</label>
           <input
-            onChange={this.handleFilter}
+            onChange={handleFilter}
             name="filterEmployee"
             id="filterEmployee"
             type="text"
@@ -102,7 +101,7 @@ class Search extends React.Component {
                 <li key={item.id} className="employee__list--item">
                 <div
                   className="item__container"
-                  onClick={this.handleCollapsible}
+                  onClick={handleCollapsible}
                   id={item.id}
                 >
                   <h2 className="item__name">
