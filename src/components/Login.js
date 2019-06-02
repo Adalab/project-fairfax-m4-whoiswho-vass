@@ -13,7 +13,7 @@ class Login extends React.Component {
             <input type="text" id="input__user" className="input__item input__user"/>
             <label htmlFor="input__password" className="label__item label__password">Contraseña</label>
             <input type={passwordState} id="input__password" className="input__item input__password"/>
-            <i class="fas fa-eye" onClick={changePassword}></i>
+            <i className={`fas fa-eye${passwordState === 'password' ? '' : '-slash'} `} onClick={changePassword}></i>
             <input type="submit" value="Entrar" className="input__submit"/>
           </div>
         </div>
