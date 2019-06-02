@@ -1,3 +1,7 @@
+@import '../stylesheets/core/functions';
+@import '../stylesheets/core/mixins';
+@import '../stylesheets/core/variables';
+
 .login__container {
   display: flex;
   flex-direction: column;
@@ -7,13 +11,51 @@
 }
 
 .logo__img {
-  width: 216px;
-  height: 86.5px;
-  margin-top: 45px;
+  width: rem(216);
+  height: rem(86.5);
+  margin-top: rem(45);
 }
 
 .inputs__container {
   display: flex;
   flex-direction: column;
-  margin-top: 150px;
+  margin-top: rem(50);
+}
+
+.input__item {
+  height: rem(40);
+  width: rem(230);
+  border: none;
+  border-radius: rem(5);
+  padding: rem(5);
+}
+
+.label__item {
+  color: white;
+  font-size: rem(12);
+  margin: rem(30) 0 rem(5) 0;
+}
+
+.input__submit {
+  border: none;
+  height: rem(50);
+  padding: rem(5);
+  border-radius: rem(5);
+  background-color: #002d62;
+  color: white;
+  font-weight: 600;
+  font-size: rem(18);
+  margin-top: rem(50);
+}
+
+.input__password {
+  position: relative;
+}
+
+.fa-eye {
+  position: absolute;
+  left: 75%;
+  top: 54%;
+  transform: scale(1.2);
+  color: #00BDEC;
 }
