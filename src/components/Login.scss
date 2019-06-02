@@ -1,27 +1,23 @@
 @import '../stylesheets/core/functions';
 @import '../stylesheets/core/mixins';
 @import '../stylesheets/core/variables';
-
 .login__container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #00BDEC;
+  background-color: #00bdec;
   height: 100vh;
 }
-
 .logo__img {
   width: rem(216);
   height: rem(86.5);
   margin-top: rem(45);
 }
-
 .inputs__container {
   display: flex;
   flex-direction: column;
   margin-top: rem(50);
 }
-
 .input__item {
   height: rem(40);
   width: rem(230);
@@ -29,13 +25,11 @@
   border-radius: rem(5);
   padding: rem(5);
 }
-
 .label__item {
   color: white;
   font-size: rem(12);
   margin: rem(30) 0 rem(5) 0;
 }
-
 .input__submit {
   border: none;
   height: rem(50);
@@ -47,7 +41,6 @@
   font-size: rem(18);
   margin-top: rem(50);
 }
-
 .input__password {
   position: relative;
 }
@@ -57,5 +50,5 @@
   left: 75%;
   top: 54%;
   transform: scale(1.2);
-  color: #00BDEC;
+  color: #00bdec;
 }

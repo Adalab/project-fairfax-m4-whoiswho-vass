@@ -1,7 +1,7 @@
 import React from 'react';
 import './Login.scss';
-
-
+​
+​
 class Login extends React.Component {
   render() {
     const {changePassword, passwordState} = this.props;
@@ -20,5 +20,5 @@ class Login extends React.Component {
     );
   }
 }
-
+​
 export default Login;
