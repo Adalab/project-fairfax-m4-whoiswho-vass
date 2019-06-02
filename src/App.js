@@ -124,14 +124,15 @@ class App extends React.Component {
                 {collapsibleId === item.id
                   ? arrDetail.map((item, index) => (
                       <div className="employee__detail" key={index}>
-                        <p>Empresa: {item.company}</p>
-                        <p>Región: {item.physicalDeliveryOfficeName}</p>
-                        <p>
-                          Email: <a href={`mailto:${item.mail}`}>{item.mail}</a>
+                        <p className="employee__detail--company">Empresa: <span className="employee__detail--company-span">{item.company}</span></p>
+                        <p className="employee__detail--region">Región: <span className="employee__detail--region-span">{item.physicalDeliveryOfficeName}</span></p>
+                        <p className="employee__detail--email">
+                          Email:
+                          <a className="employee__detail--email-link" href={`mailto:${item.mail}`}>{item.mail}</a>
                         </p>
-                        <p>
+                        <p className="employee__detail--phone">
                           Tlf:
-                          <a href={`tel:+34${item.telephoneNumber}`}>
+                          <a className="employee__detail--phone-link" href={`tel:${item.telephoneNumber}`}>
                             {item.telephoneNumber}
                           </a>
                         </p>
@@ -183,15 +184,13 @@ class App extends React.Component {
                   {collapsibleId === item.id
                     ? arrDetail.map((item, index) => (
                         <div className="employee__detail" key={index}>
-                          <p>Empresa: {item.company}</p>
-                          <p>Región: {item.physicalDeliveryOfficeName}</p>
-                          <p>
-                            Email:
-                            <a href={`mailto:${item.mail}`}>{item.mail}</a>
+                          <p className="employee__detail--company">Empresa: <span className="employee__detail--company-span">{item.company}</span></p>
+                          <p className="employee__detail--region">Región: <span className="employee__detail--region-span">{item.physicalDeliveryOfficeName}</span></p>
+                          <p className="employee__detail--email">
+                            Email: <a className="employee__detail--email-link" href={`mailto:${item.mail}`}>{item.mail}</a>
                           </p>
-                          <p>
-                            Tlf:
-                            <a href={`tel:${item.telephoneNumber}`}>
+                          <p className="employee__detail--phone">
+                            Tlf: <a className="employee__detail--phone-link" href={`tel:${item.telephoneNumber}`}>
                               {item.telephoneNumber}
                             </a>
                           </p>

@@ -1,0 +1,26 @@
+.employee__detail {
+  color: #002d62;
+  font-family: Myriad Pro;
+  font-size: rem(20);
+  // font-size: 20px;
+  text-align: left;
+}
+
+.employee__detail--company-span {
+  text-transform: uppercase;
+}
+
+
+.employee__detail--region-span {
+  text-transform: uppercase;
+}
+
+
+.employee__detail--email-link {
+  color: #002d62;
+}
+
+.employee__detail--phone-link {
+ text-decoration: none;
+ color: #002d62;
+}
