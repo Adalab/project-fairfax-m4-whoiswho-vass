@@ -1,34 +1,49 @@
+.login__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: rem(90) 0 rem(20) 0;
+}
+
+.login__title {
+  height: rem(0);
+  // Se ajusta al tamaó de la imagen
+  padding-top: rem(110);
+  width: rem(250);
+  overflow: hidden;
+  background: url('https://www.vass.es/wp-content/uploads/2018/04/logotipo-VASS.png')
+    no-repeat;
+  background-size: rem(250);
+}
 
 .login__container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #00bdec;
-  height: 100vh;
   font-family: 'Myriad Pro Semibold';
 }
-.logo__img {
-  width: rem(216);
-  height: rem(86.5);
-  margin-top: rem(45);
-}
+
 .inputs__container {
   display: flex;
   flex-direction: column;
   margin-top: rem(50);
 }
+
 .input__item {
   height: rem(40);
-  width: rem(230);
+  width: rem(300);
   border: none;
   border-radius: rem(5);
   padding: rem(5);
 }
+
 .label__item {
   color: white;
   font-size: rem(12);
   margin: rem(30) 0 rem(5) 0;
 }
+
 .input__submit {
   border: none;
   height: rem(50);
@@ -41,15 +56,38 @@
   margin-top: rem(50);
   font-family: 'Myriad Pro Semibold';
 }
-.input__password {
+
+.password__container {
   position: relative;
 }
 
 .eye {
   position: absolute;
-  left: 75%;
-  top: 52.5%;
+  left: 84%;
+  top: 28%;
   transform: translate(-50% -50%);
   font-size: rem(25);
   color: #00bdec;
+}
+
+.who__container {
+  width: rem(40);
+  padding-top: rem(80);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.who__span {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: rem(50);
+}
+
+.is__span {
+  color: rgba(0, 0, 0, 0);
+  font-family: 'Montserrat', sans-serif;
+  font-size: rem(40);
+  font-weight: bold;
+  -webkit-text-stroke: rem(2) white;
 }
