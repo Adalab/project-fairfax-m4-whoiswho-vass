@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Login from './components/Login';
 
 const employeeArr = [
   {
@@ -53,11 +54,13 @@ class App extends React.Component {
     this.state = {
       nameArr: [],
       filterName: '',
-      collapsibleId: null
+      collapsibleId: null,
+      loginPassword: 'password'
     };
 
     this.handleFilter = this.handleFilter.bind(this);
     this.handleCollapsible = this.handleCollapsible.bind(this);
+    this.handlePassword = this.handlePassword.bind(this);
   }
 
   componentDidMount() {
@@ -83,8 +86,19 @@ class App extends React.Component {
     });
   }
 
+  handlePassword() {
+    this.setState(prevState => ({
+      loginPassword:
+        prevState.loginPassword === 'password' ? 'text' : 'password'
+    }));
+  }
+
   render() {
-    const { nameArr, filterName, collapsibleId } = this.state;
+    const { nameArr, filterName, collapsibleId, loginPassword } = this.state;
+      // <Login
+      //   changePassword={this.handlePassword}
+      //   passwordState={loginPassword}
+      // />
     if (filterName === '') {
       return (
         <div className="input__container">
