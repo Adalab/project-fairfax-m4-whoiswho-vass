@@ -3,7 +3,11 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: rem(90) 0 rem(20) 0;
+  padding: rem(90) 0 rem(100) 0;
+  @include mq($bp_desktop) {
+    display: block;
+    padding: rem(40) 0 rem(100) rem(40);
+  }
 }
 
 .login__title {
@@ -15,6 +19,9 @@
   background: url('https://www.vass.es/wp-content/uploads/2018/04/logotipo-VASS.png')
     no-repeat;
   background-size: rem(250);
+  @include mq($bp_desktop) {
+    background-size: rem(100);
+  }
 }
 
 .login__container {
@@ -27,7 +34,12 @@
 .inputs__container {
   display: flex;
   flex-direction: column;
-  margin-top: rem(50);
+  @include mq($bp_desktop) {
+    border: rem(1) solid white;
+    padding: rem(50) rem(80) rem(80) rem(80);
+    opacity: 0.8;
+    box-shadow: 0px 5px 15px 0 rgba(0, 0, 0, 0.35);
+  }
 }
 
 .input__item {
@@ -71,11 +83,20 @@
 }
 
 .who__container {
-  width: rem(40);
   padding-top: rem(80);
   display: flex;
   justify-content: center;
+  @include mq($bp_desktop) {
+    padding-top: rem(130);
+  }
+}
+
+.who__title {
+  width: rem(150);
   text-align: center;
+  @include mq($bp_desktop) {
+    width: rem(500);
+  }
 }
 
 .who__span {

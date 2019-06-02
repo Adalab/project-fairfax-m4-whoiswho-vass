@@ -44,13 +44,13 @@ class Login extends React.Component {
             </div>
             <input type="submit" value="Entrar" className="input__submit" />
           </div>
-          <div className="who__container">
-            <h2 className="who__title">
-              <span className="who__span">Who</span>{' '}
-              <span className="is__span">is</span>{' '}
-              <span className="who__span">Who</span>
-            </h2>
-          </div>
+        </div>
+        <div className="who__container">
+          <h2 className="who__title">
+            <span className="who__span">Who</span>{' '}
+            <span className="is__span">is</span>{' '}
+            <span className="who__span">Who</span>
+          </h2>
         </div>
       </React.Fragment>
     );
