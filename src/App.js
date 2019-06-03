@@ -61,7 +61,7 @@ class App extends React.Component {
 
   handleFilter(event) {
     const currentValue = event.currentTarget.value;
-    this.setState({ filterName: currentValue });
+    this.setState({ filterName: currentValue, collapsibleId: null });
   }
 
   handleCollapsible(event) {
