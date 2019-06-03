@@ -60,13 +60,21 @@
   border: none;
   height: rem(50);
   padding: rem(5);
-  border-radius: rem(5);
   background-color: #002d62;
   color: white;
   font-weight: 600;
   font-size: rem(18);
-  margin-top: rem(50);
   font-family: 'Myriad Pro Semibold';
+}
+
+.input__submit--link {
+  border-radius: rem(5);
+  background-color: #002d62;
+  margin-top: rem(50);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
 }
 
 .password__container {

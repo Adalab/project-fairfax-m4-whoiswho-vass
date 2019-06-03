@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Login extends React.Component {
   render() {
@@ -42,7 +43,7 @@ class Login extends React.Component {
                 onClick={changePassword}
               />
             </div>
-            <input type="submit" value="Entrar" className="input__submit" />
+            <Link to="/search" className="input__submit--link" ><input type="submit" value="Entrar" className="input__submit" /></Link>
           </div>
         </div>
         <div className="who__container">
