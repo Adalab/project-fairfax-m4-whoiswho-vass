@@ -1,26 +1,25 @@
 .login__header {
   display: flex;
   justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: rem(90) 0 rem(100) 0;
+  padding: rem(32) 0 rem(100) 0;
   @include mq($bp_desktop) {
     display: block;
-    padding: rem(40) 0 rem(100) rem(40);
+    padding: rem(40) 0 rem(140) rem(50);
   }
 }
 
 .login__title {
-  height: rem(0);
-  // Se ajusta al tamaó de la imagen
-  padding-top: rem(110);
-  width: rem(250);
+  height: rem(1);
+  width: rem(200);
+  padding-top: rem(120);
   overflow: hidden;
-  background: url('https://www.vass.es/wp-content/uploads/2018/04/logotipo-VASS.png')
-    no-repeat;
-  background-size: rem(250);
+  background: url("./images/Logo_Login.png") no-repeat;
+  background-position: center;
+  background-size: rem(200);
   @include mq($bp_desktop) {
-    background-size: rem(100);
+    padding-top: rem(45);
+    background-size: rem(150);
+    background-position: rem(-38) rem(-10);
   }
 }
 
@@ -28,7 +27,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Myriad Pro Semibold';
+  font-family: "Myriad Pro Semibold";
 }
 
 .inputs__container {
@@ -37,14 +36,14 @@
   @include mq($bp_desktop) {
     border: rem(1) solid white;
     padding: rem(50) rem(80) rem(80) rem(80);
-    opacity: 0.8;
+    background-color: rgba(255, 255, 255, 0.2);
     box-shadow: 0px 5px 15px 0 rgba(0, 0, 0, 0.35);
   }
 }
 
 .input__item {
   height: rem(40);
-  width: rem(300);
+  width: rem(260);
   border: none;
   border-radius: rem(5);
   padding: rem(5);
@@ -52,7 +51,7 @@
 
 .label__item {
   color: white;
-  font-size: rem(12);
+  font-size: rem(13);
   margin: rem(30) 0 rem(5) 0;
 }
 
@@ -63,14 +62,14 @@
   background-color: #002d62;
   color: white;
   font-weight: 600;
-  font-size: rem(18);
-  font-family: 'Myriad Pro Semibold';
+  font-size: rem(22);
+  font-family: "Myriad Pro Semibold";
 }
 
 .input__submit--link {
   border-radius: rem(5);
   background-color: #002d62;
-  margin-top: rem(50);
+  margin-top: rem(41);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -85,17 +84,20 @@
   position: absolute;
   left: 84%;
   top: 28%;
-  transform: translate(-50% -50%);
   font-size: rem(25);
   color: #00bdec;
 }
 
+.fa-eye-slash {
+  left: 83.5%;
+}
+
 .who__container {
-  padding-top: rem(80);
   display: flex;
   justify-content: center;
+  margin: rem(88) 0 rem(25) 0;
   @include mq($bp_desktop) {
-    padding-top: rem(130);
+    padding-top: rem(204);
   }
 }
 
@@ -103,20 +105,29 @@
   width: rem(150);
   text-align: center;
   @include mq($bp_desktop) {
-    width: rem(500);
+    width: rem(580);
+    height: rem(61);
+    word-spacing: rem(30);
   }
 }
 
 .who__span {
   color: white;
-  font-family: 'Montserrat', sans-serif;
-  font-size: rem(50);
+  font-family: "Montserrat", sans-serif;
+  font-weight: bolder;
+  font-size: rem(54);
+  @include mq($bp_desktop) {
+    font-size: rem(80);
+  }
 }
 
 .is__span {
   color: rgba(0, 0, 0, 0);
-  font-family: 'Montserrat', sans-serif;
-  font-size: rem(40);
+  font-family: "Montserrat", sans-serif;
+  font-size: rem(35);
   font-weight: bold;
   -webkit-text-stroke: rem(2) white;
+  @include mq($bp_desktop) {
+    font-size: rem(80);
+  }
 }

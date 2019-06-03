@@ -10,11 +10,6 @@ class Login extends React.Component {
           <h1 className="login__title">VASS</h1>
         </header>
         <div className="login__container">
-          {/* <img
-            src="https://www.vass.es/wp-content/uploads/2018/04/logotipo-VASS.png"
-            alt="logotipo VASS"
-            className="logo__img"
-          /> */}
           <div className="inputs__container">
             <label htmlFor="input__user" className="label__item label__user">
               Usuario
@@ -43,7 +38,9 @@ class Login extends React.Component {
                 onClick={changePassword}
               />
             </div>
-            <Link to="/search" className="input__submit--link" ><input type="submit" value="Entrar" className="input__submit" /></Link>
+            <Link to="/search" className="input__submit--link">
+              <input type="submit" value="Entrar" className="input__submit" />
+            </Link>
           </div>
         </div>
         <div className="who__container">
