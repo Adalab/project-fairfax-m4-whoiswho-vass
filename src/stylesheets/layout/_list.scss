@@ -2,23 +2,68 @@
 @import '../core/mixins';
 @import '../core/variables';
 
-.background__container {
-  background-color: #dcf1fb;
-  height: 100vh;
-  width: 100vw;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.list__header {
+  height: rem(51);
+  min-width: rem(320);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: rem(8) rem(15) rem(13) rem(11);
+  box-sizing: border-box;
+}
+
+.list__title {
+  height: rem(0);
+  width: rem(80);
+  padding-top: rem(35);
+  margin: 0;
+  overflow: hidden;
+  background: url('./images/Logo_Search.png') no-repeat;
+  background-size: rem(80);
+}
+
+.logout__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: rem(10);
+}
+
+.link__logout {
+  text-decoration: none;
+}
+
+.logout {
+  margin-right: rem(8);
+  font-family: 'Myriad Pro Semibold'; 
+  color:#002d62;
+  font-size: rem(14);
+  display: inline;
+}
+
+.fa-sign-out-alt {
+  padding-bottom: rem(2);
+  color: green;
+  display: inline;
 }
 
 .main__container {
-  min-width: rem(320);
+  background-color: #dcf1fb;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 
 .list__container {
   padding: rem(0) rem(16);
-  width: 100%;
   box-shadow: rem(0) rem(13) rem(14) rem(-7) rgb(230, 228, 228);
   background-color: #ffffff;
 }
@@ -57,7 +102,7 @@
 }
 
 .input__container {
-  width: 100%;
+  min-width: rem(320);
   background-color: #50bbeb;
   display: flex;
   flex-direction: column;
