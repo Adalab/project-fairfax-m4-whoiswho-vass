@@ -84,11 +84,10 @@ class App extends React.Component {
 
   render() {
     const { nameArr, filterName, collapsibleId, loginPassword } = this.state;
-    console.log(filterName);
     return (
       <Switch>
         <Route exact path="/" render={() => (<Login changePassword={this.handlePassword} passwordState={loginPassword} />)} />
-        <Route path="/search" component={() => (<Search filterName={filterName} nameArr={nameArr} collapsibleId={collapsibleId} handleFilter={this.handleFilter} handleCollapsible={this.handleCollapsible} />)} />
+        <Route path="/search" render={() => (<Search filterName={filterName} nameArr={nameArr} collapsibleId={collapsibleId} handleFilter={this.handleFilter} handleCollapsible={this.handleCollapsible} />)} />
       </Switch>
     );
   }
