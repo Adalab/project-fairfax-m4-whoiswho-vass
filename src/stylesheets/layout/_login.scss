@@ -4,7 +4,7 @@
   padding: rem(32) 0 rem(100) 0;
   @include mq($bp_desktop) {
     display: block;
-    padding: rem(40) 0 rem(140) rem(50);
+    padding: rem(40) 0 rem(100) rem(50);
   }
 }
 
@@ -17,9 +17,9 @@
   background-position: center;
   background-size: rem(200);
   @include mq($bp_desktop) {
-    padding-top: rem(45);
+    width: rem(150);
+    padding-top: rem(60);
     background-size: rem(150);
-    background-position: rem(-38) rem(-10);
   }
 }
 
@@ -53,6 +53,9 @@
   color: white;
   font-size: rem(13);
   margin: rem(30) 0 rem(5) 0;
+  @include mq($bp_desktop) {
+    font-size: rem(15);
+  }
 }
 
 .input__submit {
@@ -64,6 +67,9 @@
   font-weight: 600;
   font-size: rem(22);
   font-family: "Myriad Pro Semibold";
+  @include mq($bp_desktop) {
+    font-size: rem(15);
+  }
 }
 
 .input__submit--link {
@@ -97,7 +103,7 @@
   justify-content: center;
   margin: rem(88) 0 rem(25) 0;
   @include mq($bp_desktop) {
-    padding-top: rem(204);
+    margin: rem(100) 0 rem(25) 0;
   }
 }
 
@@ -106,7 +112,6 @@
   text-align: center;
   @include mq($bp_desktop) {
     width: rem(580);
-    height: rem(61);
     word-spacing: rem(30);
   }
 }
@@ -129,5 +134,17 @@
   -webkit-text-stroke: rem(2) white;
   @include mq($bp_desktop) {
     font-size: rem(80);
+  }
+}
+
+.login__footer {
+  display: none;
+  @include mq($bp_desktop) {
+    display: inline-block;
+    color: white;
+    font-family: "Myriad Pro Regular";
+    font-size: rem(16);
+    font-weight: normal;
+    padding: rem(40) 0 0 rem(15);
   }
 }
