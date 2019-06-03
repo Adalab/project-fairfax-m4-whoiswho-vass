@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Login from './components/Login';
+import logout from './images/Salir.png';
 
 const employeeArr = [
   {
@@ -125,7 +126,7 @@ class App extends React.Component {
             <div className="logout__container">
               <a className="link__logout" href="#">
                 <p className="logout">Salir</p>
-                <i class="fas fa-sign-out-alt"></i>
+                <img className="logout-arrow" src={logout} alt=""/>
               </a>
             </div>
           </header>

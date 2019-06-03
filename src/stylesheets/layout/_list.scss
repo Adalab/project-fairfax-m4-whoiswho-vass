@@ -29,15 +29,17 @@
 }
 
 .logout__container {
+  border-left: solid rem(1) #50bbeb;
+  padding-left: rem(20);
+}
+
+.link__logout {
+  text-decoration: none;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding-top: rem(10);
-}
-
-.link__logout {
-  text-decoration: none;
 }
 
 .logout {
@@ -46,12 +48,11 @@
   color:#002d62;
   font-size: rem(14);
   display: inline;
+  padding-top: rem(2);
 }
 
-.fa-sign-out-alt {
-  padding-bottom: rem(2);
-  color: green;
-  display: inline;
+.logout-arrow {
+  width: rem(21);
 }
 
 .main__container {
@@ -147,6 +148,11 @@
 .employee__detail--email-link {
   margin: 0;
   padding: rem(18) rem(0) rem(0);
+}
+
+.employee__detail--phone {
+  margin: 0;
+  padding: rem(18) rem(0) rem(18);
 }
 
 .item__container {
