@@ -1,17 +1,7 @@
 import React from 'react';
+import Detail from './Detail';
 
-const arrDetail = [
-  {
-    physicalDeliveryOfficeName: 'Madrid',
-    telephoneNumber: '662025543',
-    distinguishedName:
-      'CN=Francisco Javier Pérez García,OU=Tailor-Made Solutions,OU=Delivery,OU=Vass Madrid,OU=VASS,DC=VASS,DC=INET',
-    department: 'EST SOL,PROC&INT.MAD',
-    company: 'VASS',
-    name: 'Francisco Javier Pérez García',
-    mail: 'aranzazunarvaez@gmail.com'
-  }
-];
+
 
 class Search extends React.Component {
   render () {
@@ -46,28 +36,10 @@ class Search extends React.Component {
                   onClick={handleCollapsible}
                   id={item.id}
                   >
-                  <h2 className="item__name">
-
-                    {item.givenName} {item.sn}
-                  </h2>
+                  <h2 className="item__name">{item.givenName} {item.sn}</h2>
                   <i className="fas fa-chevron-down"></i>
                 </div>
-                {collapsibleId === item.id
-                  ? arrDetail.map((item, index) => (
-                    <div className="employee__detail" key={index}>
-                        <p className="employee__detail--company">Empresa: <span className="employee__detail--company-span">{item.company}</span></p>
-                        <p className="employee__detail--region">Región: <span className="employee__detail--region-span">{item.physicalDeliveryOfficeName}</span></p>
-                        <p className="employee__detail--email">
-                          Email: <a className="employee__detail--email-link" href={`mailto:${item.mail}`}>{item.mail}</a>
-                        </p>
-                        <p className="employee__detail--phone">
-                          Tlf: <a className="employee__detail--phone-link" href={`tel:${item.telephoneNumber}`}>
-                            {item.telephoneNumber}
-                          </a>
-                        </p>
-                      </div>
-                    ))
-                    : null}
+                {collapsibleId === item.id ? <Detail /> : null}
               </li>
             ))}
           </ul>
@@ -104,28 +76,10 @@ class Search extends React.Component {
                   onClick={handleCollapsible}
                   id={item.id}
                 >
-                  <h2 className="item__name">
-
-                    {item.givenName} {item.sn}
-                  </h2>
+                  <h2 className="item__name">{item.givenName} {item.sn}</h2>
                   <i className="fas fa-chevron-down"></i>
                 </div>
-                  {collapsibleId === item.id
-                    ? arrDetail.map((item, index) => (
-                        <div className="employee__detail" key={index}>
-                          <p className="employee__detail--company">Empresa: <span className="employee__detail--company-span">{item.company}</span></p>
-                          <p className="employee__detail--region">Región: <span className="employee__detail--region-span">{item.physicalDeliveryOfficeName}</span></p>
-                          <p className="employee__detail--email">
-                            Email: <a className="employee__detail--email-link" href={`mailto:${item.mail}`}>{item.mail}</a>
-                          </p>
-                          <p className="employee__detail--phone">
-                            Tlf: <a className="employee__detail--phone-link" href={`tel:${item.telephoneNumber}`}>
-                              {item.telephoneNumber}
-                            </a>
-                          </p>
-                        </div>
-                      ))
-                    : null}
+                  {collapsibleId === item.id ? <Detail /> : null}
                 </li>
               ))}
           </ul>
