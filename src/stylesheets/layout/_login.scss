@@ -67,18 +67,16 @@
   font-weight: 600;
   font-size: rem(22);
   font-family: "Myriad Pro Semibold";
-  @include mq($bp_desktop) {
-    font-size: rem(15);
-  }
 }
 
 .input__submit--link {
+  font-size: rem(22);
   border-radius: rem(5);
   background-color: #002d62;
   margin-top: rem(41);
+  padding-top: rem(2);
   display: flex;
   justify-content: center;
-  align-items: center;
   text-decoration: none;
 }
 
