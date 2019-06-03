@@ -1,5 +1,6 @@
 import React from 'react';
 import Detail from './Detail';
+import PropTypes from 'prop-types';
 
 
 
@@ -87,6 +88,14 @@ class Search extends React.Component {
       );
     }
   }
+}
+
+Search.propTypes = {
+  filterName: PropTypes.string,
+  nameArr: PropTypes.arrayOf(PropTypes.object).isRequired,
+  collapsibleId: PropTypes.number,
+  handleFilter: PropTypes.func.isRequired,
+  handleCollapsible: PropTypes.func.isRequired
 }
 
 export default Search;

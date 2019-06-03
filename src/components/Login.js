@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class Login extends React.Component {
   render() {
@@ -10,11 +11,6 @@ class Login extends React.Component {
           <h1 className="login__title">VASS</h1>
         </header>
         <div className="login__container">
-          {/* <img
-            src="https://www.vass.es/wp-content/uploads/2018/04/logotipo-VASS.png"
-            alt="logotipo VASS"
-            className="logo__img"
-          /> */}
           <div className="inputs__container">
             <label htmlFor="input__user" className="label__item label__user">
               Usuario
@@ -37,9 +33,7 @@ class Login extends React.Component {
                 className="input__item input__password"
               />
               <i
-                className={`eye fas fa-eye${
-                  passwordState === 'password' ? '' : '-slash'
-                } `}
+                className={`eye fas fa-eye${passwordState === 'password' ? '' : '-slash'}`}
                 onClick={changePassword}
               />
             </div>
@@ -56,6 +50,11 @@ class Login extends React.Component {
       </React.Fragment>
     );
   }
+}
+
+Login.propTypes = {
+  changePassword: PropTypes.func.isRequired,
+  passwordState: PropTypes.string.isRequired 
 }
 
 export default Login;
