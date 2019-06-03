@@ -40,7 +40,7 @@ class Search extends React.Component {
                   <h2 className="item__name">{item.givenName} {item.sn}</h2>
                   <i className="fas fa-chevron-down"></i>
                 </div>
-                {collapsibleId === item.id ? <Detail /> : null}
+                {collapsibleId === item.id ? <Detail collapsibleId={collapsibleId} /> : null}
               </li>
             ))}
           </ul>
@@ -80,7 +80,7 @@ class Search extends React.Component {
                   <h2 className="item__name">{item.givenName} {item.sn}</h2>
                   <i className="fas fa-chevron-down"></i>
                 </div>
-                  {collapsibleId === item.id ? <Detail /> : null}
+                  {collapsibleId === item.id ? <Detail collapsibleId={collapsibleId} /> : null}
                 </li>
               ))}
           </ul>
