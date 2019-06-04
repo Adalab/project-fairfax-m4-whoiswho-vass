@@ -16,7 +16,7 @@ class App extends React.Component {
       filterName: '',
       // collapsibleId: null,
       eyePassword: 'password',
-      token: '',
+      token: JSON.parse(localStorage.getItem('token')) || '',
       isAuthenticated: false
     };
 
@@ -53,8 +53,8 @@ class App extends React.Component {
 
   handleEyePassword() {
     this.setState(prevState => ({
-      loginPassword:
-        prevState.loginPassword === 'password' ? 'text' : 'password'
+      eyePassword:
+        prevState.eyePassword === 'password' ? 'text' : 'password'
     }));
   }
 
@@ -90,6 +90,7 @@ class App extends React.Component {
         const dataToken = data.user.token;
         if (dataToken !== '') {
           this.setState({ isAuthenticated: true, token: dataToken });
+          localStorage.setItem('token', JSON.stringify(dataToken));
         }
       });
   };
@@ -130,11 +131,16 @@ class App extends React.Component {
         <Route
           path="/search"
           render={() => (
+            this.state.token === '' ? (
+              <Redirect from="/search" to="/" />
+              )
+            : ( 
             <Search
               filterName={filterName}
               nameArr={nameArr}
               handleFilter={this.handleFilter}
             />
+            )
           )}
         />
       </Switch>
