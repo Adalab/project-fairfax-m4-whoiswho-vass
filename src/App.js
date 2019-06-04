@@ -17,7 +17,8 @@ class App extends React.Component {
       // collapsibleId: null,
       eyePassword: 'password',
       token: JSON.parse(localStorage.getItem('token')) || '',
-      isAuthenticated: false
+      isAuthenticated: false,
+      isErrorVisible: false
     };
 
     this.valueInputEmail = '';
@@ -92,7 +93,8 @@ class App extends React.Component {
           this.setState({ isAuthenticated: true, token: dataToken });
           localStorage.setItem('token', JSON.stringify(dataToken));
         }
-      });
+      })
+      .catch(error => this.setState({isErrorVisible: true}))
   };
 
   getUsers(filterName) {
@@ -108,7 +110,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { nameArr, filterName, eyePassword } = this.state;
+    const { nameArr, filterName, eyePassword, isErrorVisible } = this.state;
     return (
       <Switch>
         <Route
@@ -124,6 +126,7 @@ class App extends React.Component {
                 handleInputEmail={this.handleInputEmail}
                 handleInputPassword={this.handleInputPassword}
                 onSubmit={this.onSubmit}
+                isErrorVisible = {isErrorVisible}
               />
             )
           }
