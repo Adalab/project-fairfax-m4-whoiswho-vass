@@ -110,19 +110,29 @@ class App extends React.Component {
       }
     })
       .then(response => response.json())
-      .then(users => this.setState({ nameArr: users }))
-      .catch(error =>
-        this.setState(prevState => ({
-          isErrorVisibleSearch:
-            prevState.isErrorVisibleSearch === false ? true : false
-        }))
+      .then(users => this.setState({ nameArr: users, isErrorVisibleSearch: false }))
+      .catch(error => 
+        this.setState({isErrorVisibleSearch: true})
       );
   }
 
   handleLogout() {
     this.setState({
-      token: ''
+      user: {
+        email: '',
+        password: ''
+      },
+      nameArr: [],
+      detailArr: [],
+      filterName: '',
+      collapsibleId: null,
+      eyePassword: 'password',
+      token:'',
+      isAuthenticated: false,
+      isErrorVisible: false,
+      isErrorVisibleSearch: false
     });
+    localStorage.removeItem('token');
   }
 
   getUserDetail(collapsibleId) {
