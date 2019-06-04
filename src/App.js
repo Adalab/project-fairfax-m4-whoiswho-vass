@@ -32,6 +32,7 @@ class App extends React.Component {
     this.handleInputPassword = this.handleInputPassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.getUsers = this.getUsers.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   handleFilter(event) {
@@ -113,6 +114,12 @@ class App extends React.Component {
       })))
   }
 
+  handleLogout() {
+    this.setState({
+      token: ''
+    })
+  }
+
   render() {
     const { nameArr, filterName, eyePassword, isErrorVisible, isErrorVisibleSearch } = this.state;
     return (
@@ -147,6 +154,7 @@ class App extends React.Component {
               nameArr={nameArr}
               handleFilter={this.handleFilter}
               isErrorVisibleSearch={isErrorVisibleSearch}
+              handleLogout={this.handleLogout}
             />
             )
           )}

@@ -5,12 +5,13 @@ import PropTypes from 'prop-types';
 
 class Search extends React.Component {
   render() {
-    const { filterName, nameArr, handleFilter, isErrorVisibleSearch } = this.props;
+    const { filterName, nameArr, handleFilter, isErrorVisibleSearch, handleLogout } = this.props;
 
     if (filterName === '') {
       return (
         <div className="main__container">
           <div className="input__container">
+            <p className="logout" onClick={handleLogout}>SALIR</p>
             <label className="label__input" htmlFor="filterEmployee">
               Campo de búsqueda
             </label>
