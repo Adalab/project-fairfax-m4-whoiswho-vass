@@ -61,7 +61,21 @@
 
 .input__submit {
   border: none;
-  margin-top: rem(41);
+  margin-top: rem(52);
+  height: rem(50);
+  background-color: #002d62;
+  border-radius: rem(5);
+  color: white;
+  font-size: rem(22);
+  font-family: "Myriad Pro Semibold";
+  @include mq($bp_desktop) {
+    margin-top: rem(61);
+  }
+}
+
+.input__submit-pad {
+  border: none;
+  margin-top: rem(0);
   height: rem(50);
   background-color: #002d62;
   border-radius: rem(5);
@@ -91,9 +105,9 @@
   color: white;
   font-size: rem(12);
   width: rem(260);
-  margin-left: rem(4);
   @include mq($bp_desktop) {
     font-size: rem(15);
+    padding-left: rem(30);
   }
 }
 
@@ -148,6 +162,6 @@
     font-family: "Myriad Pro Regular";
     font-size: rem(16);
     font-weight: normal;
-    padding: rem(20) 0 0 rem(15);
+    padding: rem(10) 0 0 rem(15);
   }
 }
