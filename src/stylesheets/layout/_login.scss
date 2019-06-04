@@ -1,0 +1,137 @@
+.login__header {
+  display: flex;
+  justify-content: center;
+  padding: rem(32) 0 rem(100) 0;
+  @include mq($bp_desktop) {
+    display: block;
+    padding: rem(40) 0 rem(100) rem(50);
+  }
+}
+
+.login__title {
+  height: rem(1);
+  width: rem(200);
+  padding-top: rem(120);
+  overflow: hidden;
+  background: url("./images/Logo_Login.png") no-repeat;
+  background-position: center;
+  background-size: rem(200);
+  @include mq($bp_desktop) {
+    width: rem(150);
+    padding-top: rem(60);
+    background-size: rem(150);
+  }
+}
+
+.login__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Myriad Pro Semibold";
+}
+
+.inputs__container {
+  display: flex;
+  flex-direction: column;
+  @include mq($bp_desktop) {
+    border: rem(1) solid white;
+    padding: rem(50) rem(80) rem(80) rem(80);
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 5px 15px 0 rgba(0, 0, 0, 0.35);
+  }
+}
+
+.input__item {
+  height: rem(40);
+  width: rem(260);
+  border: none;
+  border-radius: rem(5);
+  padding: rem(5);
+}
+
+.label__item {
+  color: white;
+  font-size: rem(13);
+  margin: rem(30) 0 rem(5) 0;
+  @include mq($bp_desktop) {
+    font-size: rem(15);
+  }
+}
+
+.input__submit {
+  border: none;
+  margin-top: rem(41);
+  height: rem(50);
+  background-color: #002d62;
+  border-radius: rem(5);
+  color: white;
+  font-size: rem(22);
+  font-family: "Myriad Pro Semibold";
+}
+
+.password__container {
+  position: relative;
+}
+
+.eye {
+  position: absolute;
+  left: 84%;
+  top: 21%;
+  font-size: rem(25);
+  color: #00bdec;
+}
+
+.fa-eye-slash {
+  left: 83.5%;
+}
+
+.who__container {
+  display: flex;
+  justify-content: center;
+  margin: rem(88) 0 rem(25) 0;
+  @include mq($bp_desktop) {
+    margin: rem(100) 0 rem(25) 0;
+  }
+}
+
+.who__title {
+  width: rem(150);
+  text-align: center;
+  @include mq($bp_desktop) {
+    width: rem(580);
+    word-spacing: rem(30);
+  }
+}
+
+.who__span {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bolder;
+  font-size: rem(54);
+  @include mq($bp_desktop) {
+    font-size: rem(80);
+  }
+}
+
+.is__span {
+  color: rgba(0, 0, 0, 0);
+  font-family: "Montserrat", sans-serif;
+  font-size: rem(35);
+  font-weight: bold;
+  -webkit-text-stroke: rem(2) white;
+  @include mq($bp_desktop) {
+    font-size: rem(80);
+  }
+}
+
+.login__footer {
+  display: none;
+  @include mq($bp_desktop) {
+    display: inline-block;
+    color: white;
+    font-family: "Myriad Pro Regular";
+    font-size: rem(16);
+    font-weight: normal;
+    padding: rem(40) 0 0 rem(15);
+  }
+}
