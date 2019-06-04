@@ -11,7 +11,9 @@ class Search extends React.Component {
       handleFilter,
       collapsibleId,
       handleCollapsible,
-      detailArr
+      detailArr,
+      isErrorVisibleSearch,
+      handleLogout
     } = this.props;
 
     if (filterName === '') {
@@ -25,6 +27,9 @@ class Search extends React.Component {
             </div>
           </header>
           <div className="input__container">
+            <p className="logout" onClick={handleLogout}>
+              SALIR
+            </p>
             <label className="label__input" htmlFor="filterEmployee">
               Campo de búsqueda
             </label>
@@ -65,6 +70,13 @@ class Search extends React.Component {
               />
               <i className="fas fa-search" />
             </div>
+            {isErrorVisibleSearch ? (
+              <p className="error__message">
+                {' '}
+                <i className="fas fa-exclamation-circle" /> No hay ningún
+                resultado que coincida con la búsqueda.
+              </p>
+            ) : null}
           </div>
           <div className="list__container">
             <ul className="employee__list">

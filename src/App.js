@@ -17,8 +17,10 @@ class App extends React.Component {
       filterName: '',
       collapsibleId: null,
       eyePassword: 'password',
-      token: '',
-      isAuthenticated: false
+      token: JSON.parse(localStorage.getItem('token')) || '',
+      isAuthenticated: false,
+      isErrorVisible: false,
+      isErrorVisibleSearch: false
     };
 
     this.valueInputEmail = '';
@@ -32,6 +34,7 @@ class App extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.getUsers = this.getUsers.bind(this);
     this.getUserDetail = this.getUserDetail.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   handleFilter(event) {
@@ -56,8 +59,7 @@ class App extends React.Component {
 
   handleEyePassword() {
     this.setState(prevState => ({
-      loginPassword:
-        prevState.loginPassword === 'password' ? 'text' : 'password'
+      eyePassword: prevState.eyePassword === 'password' ? 'text' : 'password'
     }));
   }
 
@@ -93,8 +95,10 @@ class App extends React.Component {
         const dataToken = data.user.token;
         if (dataToken !== '') {
           this.setState({ isAuthenticated: true, token: dataToken });
+          localStorage.setItem('token', JSON.stringify(dataToken));
         }
-      });
+      })
+      .catch(error => this.setState({ isErrorVisible: true }));
   };
 
   getUsers(filterName) {
@@ -106,7 +110,19 @@ class App extends React.Component {
       }
     })
       .then(response => response.json())
-      .then(users => this.setState({ nameArr: users }));
+      .then(users => this.setState({ nameArr: users }))
+      .catch(error =>
+        this.setState(prevState => ({
+          isErrorVisibleSearch:
+            prevState.isErrorVisibleSearch === false ? true : false
+        }))
+      );
+  }
+
+  handleLogout() {
+    this.setState({
+      token: ''
+    });
   }
 
   getUserDetail(collapsibleId) {
@@ -126,8 +142,11 @@ class App extends React.Component {
       filterName,
       eyePassword,
       collapsibleId,
-      detailArr
+      detailArr,
+      isErrorVisible,
+      isErrorVisibleSearch
     } = this.state;
+
     return (
       <Switch>
         <Route
@@ -143,22 +162,29 @@ class App extends React.Component {
                 handleInputEmail={this.handleInputEmail}
                 handleInputPassword={this.handleInputPassword}
                 onSubmit={this.onSubmit}
+                isErrorVisible={isErrorVisible}
               />
             )
           }
         />
         <Route
           path="/search"
-          render={() => (
-            <Search
-              filterName={filterName}
-              nameArr={nameArr}
-              handleFilter={this.handleFilter}
-              handleCollapsible={this.handleCollapsible}
-              collapsibleId={collapsibleId}
-              detailArr={detailArr}
-            />
-          )}
+          render={() =>
+            this.state.token === '' ? (
+              <Redirect from="/search" to="/" />
+            ) : (
+              <Search
+                filterName={filterName}
+                nameArr={nameArr}
+                handleFilter={this.handleFilter}
+                handleCollapsible={this.handleCollapsible}
+                collapsibleId={collapsibleId}
+                detailArr={detailArr}
+                isErrorVisibleSearch={isErrorVisibleSearch}
+                handleLogout={this.handleLogout}
+              />
+            )
+          }
         />
       </Switch>
     );
