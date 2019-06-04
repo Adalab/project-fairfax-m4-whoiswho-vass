@@ -48,7 +48,17 @@ class Login extends React.Component {
       headers: { 'content-Type': 'application/json' }
     })
       .then(response => response.json())
-      .then(data => console.log(data));
+      .then(data => {
+        const dataToken = data.user.token;
+        return fetch('https://whoiswho.vass.es/api/employees?cn=Samuel', {
+          method: 'GET',
+          headers: {
+            Authorization: `Token ${dataToken}`
+          }
+        })
+          .then(response => response.json())
+          .then(dota => console.log(dota));
+      });
   };
 
   render() {
