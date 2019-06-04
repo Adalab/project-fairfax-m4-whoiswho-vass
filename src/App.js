@@ -4,7 +4,6 @@ import Login from './components/Login';
 import Search from './components/Search';
 import { Route, Switch } from 'react-router-dom';
 
-
 const employeeArr = [
   {
     givenName: 'Pedro Javier',
@@ -42,15 +41,25 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      user: {
+        email: '',
+        password: ''
+      },
       nameArr: [],
       filterName: '',
       collapsibleId: null,
       loginPassword: 'password'
     };
 
+    this.valueInputEmail = '';
+    this.valueInputPassword = '';
+
     this.handleFilter = this.handleFilter.bind(this);
     this.handleCollapsible = this.handleCollapsible.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
+    this.handleInputEmail = this.handleInputEmail.bind(this);
+    this.handleInputPassword = this.handleInputPassword.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -83,12 +92,76 @@ class App extends React.Component {
     }));
   }
 
+  handleInputEmail(event) {
+    this.valueInputEmail = event.currentTarget.value;
+    this.setState({
+      user: {
+        email: this.valueInputEmail,
+        password: this.valueInputPassword
+      }
+    });
+  }
+
+  handleInputPassword(event) {
+    this.valueInputPassword = event.currentTarget.value;
+    this.setState({
+      user: {
+        email: this.valueInputEmail,
+        password: this.valueInputPassword
+      }
+    });
+  }
+
+  onSubmit = event => {
+    event.preventDefault();
+    fetch('https://whoiswho.vass.es/api/users/login', {
+      method: 'POST',
+      body: JSON.stringify(this.state),
+      headers: { 'content-Type': 'application/json' }
+    })
+      .then(response => response.json())
+      .then(data => {
+        const dataToken = data.user.token;
+        return fetch('https://whoiswho.vass.es/api/employees?cn=Samuel', {
+          method: 'GET',
+          headers: {
+            Authorization: `Token ${dataToken}`
+          }
+        })
+          .then(response => response.json())
+          .then(dota => console.log(dota));
+      });
+  };
+
   render() {
     const { nameArr, filterName, collapsibleId, loginPassword } = this.state;
     return (
       <Switch>
-        <Route exact path="/" render={() => (<Login changePassword={this.handlePassword} passwordState={loginPassword} />)} />
-        <Route path="/search" render={() => (<Search filterName={filterName} nameArr={nameArr} collapsibleId={collapsibleId} handleFilter={this.handleFilter} handleCollapsible={this.handleCollapsible} />)} />
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <Login
+              changePassword={this.handlePassword}
+              passwordState={loginPassword}
+              handleInputEmail={this.handleInputEmail}
+              handleInputPassword={this.handleInputPassword}
+              onSubmit={this.onSubmit}
+            />
+          )}
+        />
+        <Route
+          path="/search"
+          render={() => (
+            <Search
+              filterName={filterName}
+              nameArr={nameArr}
+              collapsibleId={collapsibleId}
+              handleFilter={this.handleFilter}
+              handleCollapsible={this.handleCollapsible}
+            />
+          )}
+        />
       </Switch>
     );
   }

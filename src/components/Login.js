@@ -3,72 +3,73 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class Login extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      user: {
-        email: '',
-        password: ''
-      }
-    };
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {};
 
-    this.valueInputEmail = '';
-    this.valueInputPassword = '';
+  //   this.valueInputEmail = '';
+  //   this.valueInputPassword = '';
 
-    this.handleInputEmail = this.handleInputEmail.bind(this);
-    this.handleInputPassword = this.handleInputPassword.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
+  //   this.handleInputEmail = this.handleInputEmail.bind(this);
+  //   this.handleInputPassword = this.handleInputPassword.bind(this);
+  //   this.onSubmit = this.onSubmit.bind(this);
+  // }
 
-  handleInputEmail(event) {
-    this.valueInputEmail = event.currentTarget.value;
-    this.setState({
-      user: {
-        email: this.valueInputEmail,
-        password: this.valueInputPassword
-      }
-    });
-  }
+  // handleInputEmail(event) {
+  //   this.valueInputEmail = event.currentTarget.value;
+  //   this.setState({
+  //     user: {
+  //       email: this.valueInputEmail,
+  //       password: this.valueInputPassword
+  //     }
+  //   });
+  // }
 
-  handleInputPassword(event) {
-    this.valueInputPassword = event.currentTarget.value;
-    this.setState({
-      user: {
-        email: this.valueInputEmail,
-        password: this.valueInputPassword
-      }
-    });
-  }
+  // handleInputPassword(event) {
+  //   this.valueInputPassword = event.currentTarget.value;
+  //   this.setState({
+  //     user: {
+  //       email: this.valueInputEmail,
+  //       password: this.valueInputPassword
+  //     }
+  //   });
+  // }
 
-  onSubmit = event => {
-    event.preventDefault();
-    fetch('https://whoiswho.vass.es/api/users/login', {
-      method: 'POST',
-      body: JSON.stringify(this.state),
-      headers: { 'content-Type': 'application/json' }
-    })
-      .then(response => response.json())
-      .then(data => {
-        const dataToken = data.user.token;
-        return fetch('https://whoiswho.vass.es/api/employees?cn=Samuel', {
-          method: 'GET',
-          headers: {
-            Authorization: `Token ${dataToken}`
-          }
-        })
-          .then(response => response.json())
-          .then(dota => console.log(dota));
-      });
-  };
+  // onSubmit = event => {
+  //   event.preventDefault();
+  //   fetch('https://whoiswho.vass.es/api/users/login', {
+  //     method: 'POST',
+  //     body: JSON.stringify(this.state),
+  //     headers: { 'content-Type': 'application/json' }
+  //   })
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       const dataToken = data.user.token;
+  //       return fetch('https://whoiswho.vass.es/api/employees?cn=Samuel', {
+  //         method: 'GET',
+  //         headers: {
+  //           Authorization: `Token ${dataToken}`
+  //         }
+  //       })
+  //         .then(response => response.json())
+  //         .then(dota => console.log(dota));
+  //     });
+  // };
 
   render() {
-    const { changePassword, passwordState } = this.props;
+    const {
+      handleInputEmail,
+      handleInputPassword,
+      onSubmit,
+      changePassword,
+      passwordState
+    } = this.props;
     return (
       <React.Fragment>
         <header className="login__header">
           <h1 className="login__title">VASS</h1>
         </header>
-        <form className="login__container" onSubmit={this.onSubmit}>
+        <form className="login__container" onSubmit={onSubmit}>
           <div className="inputs__container">
             <label htmlFor="input__user" className="label__item label__user">
               Usuario
@@ -77,7 +78,7 @@ class Login extends React.Component {
               type="text"
               id="input__user"
               className="input__item input__user"
-              onChange={this.handleInputEmail}
+              onChange={handleInputEmail}
             />
             <label
               htmlFor="input__password"
@@ -90,7 +91,7 @@ class Login extends React.Component {
                 type={passwordState}
                 id="input__password"
                 className="input__item input__password"
-                onChange={this.handleInputPassword}
+                onChange={handleInputPassword}
               />
               <i
                 className={`eye fas fa-eye${
