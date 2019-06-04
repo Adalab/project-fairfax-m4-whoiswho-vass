@@ -13,8 +13,9 @@ class App extends React.Component {
         password: ''
       },
       nameArr: [],
+      detailArr: [],
       filterName: '',
-      // collapsibleId: null,
+      collapsibleId: null,
       eyePassword: 'password',
       token: '',
       isAuthenticated: false
@@ -24,12 +25,13 @@ class App extends React.Component {
     this.valueInputPassword = '';
 
     this.handleFilter = this.handleFilter.bind(this);
-    // this.handleCollapsible = this.handleCollapsible.bind(this);
+    this.handleCollapsible = this.handleCollapsible.bind(this);
     this.handleEyePassword = this.handleEyePassword.bind(this);
     this.handleInputEmail = this.handleInputEmail.bind(this);
     this.handleInputPassword = this.handleInputPassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.getUsers = this.getUsers.bind(this);
+    this.getUserDetail = this.getUserDetail.bind(this);
   }
 
   handleFilter(event) {
@@ -40,16 +42,17 @@ class App extends React.Component {
     }
   }
 
-  // handleCollapsible(event) {
-  //   const newCollapsibleId = event.currentTarget.id;
-  //   this.setState(prevState => {
-  //     if (parseInt(newCollapsibleId) === prevState.collapsibleId) {
-  //       return { collapsibleId: null };
-  //     } else {
-  //       return { collapsibleId: parseInt(newCollapsibleId) };
-  //     }
-  //   });
-  // }
+  handleCollapsible(event) {
+    const newCollapsibleId = event.currentTarget.id;
+    this.setState(prevState => {
+      if (newCollapsibleId === prevState.collapsibleId) {
+        return { collapsibleId: null };
+      } else {
+        return { collapsibleId: newCollapsibleId };
+      }
+    });
+    this.getUserDetail(newCollapsibleId);
+  }
 
   handleEyePassword() {
     this.setState(prevState => ({
@@ -106,8 +109,25 @@ class App extends React.Component {
       .then(users => this.setState({ nameArr: users }));
   }
 
+  getUserDetail(collapsibleId) {
+    fetch(`https://whoiswho.vass.es/api/employees/${collapsibleId}`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Token ${this.state.token}`
+      }
+    })
+      .then(response => response.json())
+      .then(userDetail => this.setState({ detailArr: userDetail }));
+  }
+
   render() {
-    const { nameArr, filterName, eyePassword } = this.state;
+    const {
+      nameArr,
+      filterName,
+      eyePassword,
+      collapsibleId,
+      detailArr
+    } = this.state;
     return (
       <Switch>
         <Route
@@ -134,6 +154,9 @@ class App extends React.Component {
               filterName={filterName}
               nameArr={nameArr}
               handleFilter={this.handleFilter}
+              handleCollapsible={this.handleCollapsible}
+              collapsibleId={collapsibleId}
+              detailArr={detailArr}
             />
           )}
         />
