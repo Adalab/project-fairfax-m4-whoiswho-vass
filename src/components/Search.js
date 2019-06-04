@@ -1,11 +1,18 @@
 import React from 'react';
-// import Detail from './Detail';
+import Detail from './Detail';
 import PropTypes from 'prop-types';
 // import logout from '../images/Salir.png';
 
 class Search extends React.Component {
   render() {
-    const { filterName, nameArr, handleFilter } = this.props;
+    const {
+      filterName,
+      nameArr,
+      handleFilter,
+      collapsibleId,
+      handleCollapsible,
+      detailArr
+    } = this.props;
 
     if (filterName === '') {
       return (
@@ -67,17 +74,20 @@ class Search extends React.Component {
                   >
                     <div
                       className="item__container"
-                      onClick={this.handleCollapsible}
-                      id={item.id}
+                      onClick={handleCollapsible}
+                      id={item.sAMAccountName}
                     >
                       <h2 className="item__name">
                         {item.givenName} {item.sn}
                       </h2>
                       <i className="fas fa-chevron-down" />
                     </div>
-                    {/* {collapsibleId === item.id ? (
-                      <Detail collapsibleId={collapsibleId} />
-                    ) : null} */}
+                    {collapsibleId === item.sAMAccountName ? (
+                      <Detail
+                        collapsibleId={collapsibleId}
+                        detailArr={detailArr}
+                      />
+                    ) : null}
                   </li>
                 ))}
             </ul>
@@ -91,7 +101,9 @@ class Search extends React.Component {
 Search.propTypes = {
   filterName: PropTypes.string,
   nameArr: PropTypes.arrayOf(PropTypes.object).isRequired,
-  handleFilter: PropTypes.func.isRequired
+  handleFilter: PropTypes.func.isRequired,
+  handleCollapsible: PropTypes.func.isRequired,
+  collapsibleId: PropTypes.string
 };
 
 export default Search;
