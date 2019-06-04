@@ -2,92 +2,141 @@ import React from 'react';
 import './App.css';
 import Login from './components/Login';
 import Search from './components/Search';
-import { Route, Switch } from 'react-router-dom';
-
-const employeeArr = [
-  {
-    givenName: 'Pedro Javier',
-    sn: 'Perez Mora',
-    sAMAccountName: 'pedro.perez'
-  },
-  {
-    givenName: 'Francisco Javier',
-    sn: 'Pérez García',
-    sAMAccountName: 'javier.perezgarcia'
-  },
-  {
-    givenName: 'Javier',
-    sn: 'Perez Alonso',
-    sAMAccountName: 'javier.perez'
-  },
-  {
-    givenName: 'Javier',
-    sn: 'Perez Gonzalo',
-    sAMAccountName: 'javier.pgonzalo'
-  },
-  {
-    givenName: 'Juan Javier',
-    sn: 'Perez Ruiz',
-    sAMAccountName: 'juan.perez'
-  },
-  {
-    givenName: 'Javier',
-    sn: 'Perez Garcia',
-    sAMAccountName: 'jperez'
-  }
-];
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      user: {
+        email: '',
+        password: ''
+      },
       nameArr: [],
       filterName: '',
-      collapsibleId: null,
-      loginPassword: 'password'
+      // collapsibleId: null,
+      eyePassword: 'password',
+      token: '',
+      isAuthenticated: false
     };
 
-    this.handleFilter = this.handleFilter.bind(this);
-    this.handleCollapsible = this.handleCollapsible.bind(this);
-    this.handlePassword = this.handlePassword.bind(this);
-  }
+    this.valueInputEmail = '';
+    this.valueInputPassword = '';
 
-  componentDidMount() {
-    const newArr = employeeArr.map((item, index) => {
-      return { ...item, id: index };
-    });
-    this.setState({ nameArr: newArr });
+    this.handleFilter = this.handleFilter.bind(this);
+    // this.handleCollapsible = this.handleCollapsible.bind(this);
+    this.handleEyePassword = this.handleEyePassword.bind(this);
+    this.handleInputEmail = this.handleInputEmail.bind(this);
+    this.handleInputPassword = this.handleInputPassword.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.getUsers = this.getUsers.bind(this);
   }
 
   handleFilter(event) {
     const currentValue = event.currentTarget.value;
-    this.setState({ filterName: currentValue });
+    this.setState({ filterName: currentValue, collapsibleId: null });
+    if (currentValue.length >= 3) {
+      this.getUsers(currentValue);
+    }
   }
 
-  handleCollapsible(event) {
-    const newCollapsibleId = event.currentTarget.id;
-    this.setState(prevState => {
-      if (parseInt(newCollapsibleId) === prevState.collapsibleId) {
-        return { collapsibleId: null };
-      } else {
-        return { collapsibleId: parseInt(newCollapsibleId) };
-      }
-    });
-  }
+  // handleCollapsible(event) {
+  //   const newCollapsibleId = event.currentTarget.id;
+  //   this.setState(prevState => {
+  //     if (parseInt(newCollapsibleId) === prevState.collapsibleId) {
+  //       return { collapsibleId: null };
+  //     } else {
+  //       return { collapsibleId: parseInt(newCollapsibleId) };
+  //     }
+  //   });
+  // }
 
-  handlePassword() {
+  handleEyePassword() {
     this.setState(prevState => ({
       loginPassword:
         prevState.loginPassword === 'password' ? 'text' : 'password'
     }));
   }
 
+  handleInputEmail(event) {
+    this.valueInputEmail = event.currentTarget.value;
+    this.setState({
+      user: {
+        email: this.valueInputEmail,
+        password: this.valueInputPassword
+      }
+    });
+  }
+
+  handleInputPassword(event) {
+    this.valueInputPassword = event.currentTarget.value;
+    this.setState({
+      user: {
+        email: this.valueInputEmail,
+        password: this.valueInputPassword
+      }
+    });
+  }
+
+  onSubmit = event => {
+    event.preventDefault();
+    fetch('https://whoiswho.vass.es/api/users/login', {
+      method: 'POST',
+      body: JSON.stringify(this.state),
+      headers: { 'content-Type': 'application/json' }
+    })
+      .then(response => response.json())
+      .then(data => {
+        const dataToken = data.user.token;
+        if (dataToken !== '') {
+          this.setState({ isAuthenticated: true, token: dataToken });
+        }
+      });
+  };
+
+  getUsers(filterName) {
+    fetch(`https://whoiswho.vass.es/api/employees?cn=${filterName}`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Token ${this.state.token}`,
+        'content-Type': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then(users => this.setState({ nameArr: users }));
+  }
+
   render() {
-    const { nameArr, filterName, collapsibleId, loginPassword } = this.state;
+    const { nameArr, filterName, eyePassword } = this.state;
     return (
       <Switch>
-        <Route exact path="/" render={() => (<Login changePassword={this.handlePassword} passwordState={loginPassword} />)} />
-        <Route path="/search" render={() => (<Search filterName={filterName} nameArr={nameArr} collapsibleId={collapsibleId} handleFilter={this.handleFilter} handleCollapsible={this.handleCollapsible} />)} />
+        <Route
+          exact
+          path="/"
+          render={() =>
+            this.state.isAuthenticated === true ? (
+              <Redirect from="/" to="/search" />
+            ) : (
+              <Login
+                handleEyePassword={this.handleEyePassword}
+                eyePassword={eyePassword}
+                handleInputEmail={this.handleInputEmail}
+                handleInputPassword={this.handleInputPassword}
+                onSubmit={this.onSubmit}
+              />
+            )
+          }
+        />
+        <Route
+          path="/search"
+          render={() => (
+            <Search
+              filterName={filterName}
+              nameArr={nameArr}
+              handleFilter={this.handleFilter}
+            />
+          )}
+        />
       </Switch>
     );
   }
