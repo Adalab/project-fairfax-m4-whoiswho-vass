@@ -56,6 +56,9 @@ class Login extends React.Component {
             <span className="who__span">Who</span>
           </h2>
         </div>
+        <footer className="login__footer">
+          VASS - Copyright © 2019 Todos los derechos reservados
+        </footer>
       </React.Fragment>
     );
   }
