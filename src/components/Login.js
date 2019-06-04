@@ -8,7 +8,8 @@ class Login extends React.Component {
       handleInputPassword,
       onSubmit,
       handleEyePassword,
-      eyePassword
+      eyePassword,
+      isErrorVisible
     } = this.props;
     return (
       <React.Fragment>
@@ -46,6 +47,7 @@ class Login extends React.Component {
                 onClick={handleEyePassword}
               />
             </div>
+            {isErrorVisible ? <p className="error__message"> <i className="fas fa-exclamation-circle"></i> El nombre de usuario o la contraseña son incorrectos.</p> : null}
             <input type="submit" value="Entrar" className="input__submit" />
           </div>
         </form>
