@@ -1,5 +1,6 @@
 {
   "name": "fairfax-m4-whoiswho-vass",
+  "homepage": "./",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

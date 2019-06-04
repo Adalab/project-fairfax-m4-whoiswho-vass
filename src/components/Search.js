@@ -43,6 +43,9 @@ class Search extends React.Component {
       return (
         <div className="main__container">
           <div className="input__container">
+            <p className="logout" onClick={handleLogout}>
+              SALIR
+            </p>
             <label className="label__input" htmlFor="filterEmployee">
               Campo de búsqueda
             </label>
