@@ -14,30 +14,23 @@ class App extends React.Component {
       },
       nameArr: [],
       filterName: '',
-      collapsibleId: null,
-      loginPassword: 'password',
+      // collapsibleId: null,
+      eyePassword: 'password',
       token: '',
-      login: false
+      isAuthenticated: false
     };
 
     this.valueInputEmail = '';
     this.valueInputPassword = '';
 
     this.handleFilter = this.handleFilter.bind(this);
-    this.handleCollapsible = this.handleCollapsible.bind(this);
-    this.handlePassword = this.handlePassword.bind(this);
+    // this.handleCollapsible = this.handleCollapsible.bind(this);
+    this.handleEyePassword = this.handleEyePassword.bind(this);
     this.handleInputEmail = this.handleInputEmail.bind(this);
     this.handleInputPassword = this.handleInputPassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.getUsers = this.getUsers.bind(this);
   }
-
-  // componentDidMount() {
-  //   const newArr = employeeArr.map((item, index) => {
-  //     return { ...item, id: index };
-  //   });
-  //   this.setState({ nameArr: newArr });
-  // }
 
   handleFilter(event) {
     const currentValue = event.currentTarget.value;
@@ -47,18 +40,18 @@ class App extends React.Component {
     }
   }
 
-  handleCollapsible(event) {
-    const newCollapsibleId = event.currentTarget.id;
-    this.setState(prevState => {
-      if (parseInt(newCollapsibleId) === prevState.collapsibleId) {
-        return { collapsibleId: null };
-      } else {
-        return { collapsibleId: parseInt(newCollapsibleId) };
-      }
-    });
-  }
+  // handleCollapsible(event) {
+  //   const newCollapsibleId = event.currentTarget.id;
+  //   this.setState(prevState => {
+  //     if (parseInt(newCollapsibleId) === prevState.collapsibleId) {
+  //       return { collapsibleId: null };
+  //     } else {
+  //       return { collapsibleId: parseInt(newCollapsibleId) };
+  //     }
+  //   });
+  // }
 
-  handlePassword() {
+  handleEyePassword() {
     this.setState(prevState => ({
       loginPassword:
         prevState.loginPassword === 'password' ? 'text' : 'password'
@@ -96,7 +89,7 @@ class App extends React.Component {
       .then(data => {
         const dataToken = data.user.token;
         if (dataToken !== '') {
-          this.setState({ login: true, token: dataToken });
+          this.setState({ isAuthenticated: true, token: dataToken });
         }
       });
   };
@@ -114,19 +107,19 @@ class App extends React.Component {
   }
 
   render() {
-    const { nameArr, filterName, collapsibleId, loginPassword } = this.state;
+    const { nameArr, filterName, eyePassword } = this.state;
     return (
       <Switch>
         <Route
           exact
           path="/"
           render={() =>
-            this.state.login === true ? (
+            this.state.isAuthenticated === true ? (
               <Redirect from="/" to="/search" />
             ) : (
               <Login
-                changePassword={this.handlePassword}
-                passwordState={loginPassword}
+                handleEyePassword={this.handleEyePassword}
+                eyePassword={eyePassword}
                 handleInputEmail={this.handleInputEmail}
                 handleInputPassword={this.handleInputPassword}
                 onSubmit={this.onSubmit}
@@ -140,9 +133,7 @@ class App extends React.Component {
             <Search
               filterName={filterName}
               nameArr={nameArr}
-              collapsibleId={collapsibleId}
               handleFilter={this.handleFilter}
-              handleCollapsible={this.handleCollapsible}
             />
           )}
         />

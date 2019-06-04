@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class Login extends React.Component {
@@ -8,8 +7,8 @@ class Login extends React.Component {
       handleInputEmail,
       handleInputPassword,
       onSubmit,
-      changePassword,
-      passwordState
+      handleEyePassword,
+      eyePassword
     } = this.props;
     return (
       <React.Fragment>
@@ -35,22 +34,19 @@ class Login extends React.Component {
             </label>
             <div className="password__container">
               <input
-                type={passwordState}
+                type={eyePassword}
                 id="input__password"
                 className="input__item input__password"
                 onChange={handleInputPassword}
               />
               <i
                 className={`eye fas fa-eye${
-                  passwordState === 'password' ? '' : '-slash'
+                  eyePassword === 'password' ? '' : '-slash'
                 }`}
-                onClick={changePassword}
+                onClick={handleEyePassword}
               />
             </div>
             <input type="submit" value="Entrar" className="input__submit" />
-            {/* <Link to="/search" className="input__submit--link">
-              
-            </Link> */}
           </div>
         </form>
         <div className="who__container">
@@ -66,8 +62,8 @@ class Login extends React.Component {
 }
 
 Login.propTypes = {
-  changePassword: PropTypes.func.isRequired,
-  passwordState: PropTypes.string.isRequired
+  handleEyePassword: PropTypes.func.isRequired,
+  eyePassword: PropTypes.string.isRequired
 };
 
 export default Login;
