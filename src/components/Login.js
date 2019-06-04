@@ -15,11 +15,7 @@ class Login extends React.Component {
         <header className="login__header">
           <h1 className="login__title">VASS</h1>
         </header>
-<<<<<<< HEAD
-        <div className="login__container">
-=======
         <form className="login__container" onSubmit={onSubmit}>
->>>>>>> dev
           <div className="inputs__container">
             <label htmlFor="input__user" className="label__item label__user">
               Usuario
@@ -50,13 +46,7 @@ class Login extends React.Component {
                 onClick={handleEyePassword}
               />
             </div>
-<<<<<<< HEAD
-            <Link to="/search" className="input__submit--link">
-              <input type="submit" value="Entrar" className="input__submit" />
-            </Link>
-=======
             <input type="submit" value="Entrar" className="input__submit" />
->>>>>>> dev
           </div>
         </form>
         <div className="who__container">
