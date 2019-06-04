@@ -31,7 +31,7 @@ class Search extends React.Component {
             <div className="search">
               <input
                 onChange={handleFilter}
-                className="input"
+                className="input__search"
                 name="filterEmployee"
                 id="filterEmployee"
                 type="text"
@@ -58,7 +58,7 @@ class Search extends React.Component {
             <div className="search">
               <input
                 onChange={handleFilter}
-                className="input"
+                className="input__search"
                 name="filterEmployee"
                 id="filterEmployee"
                 type="text"

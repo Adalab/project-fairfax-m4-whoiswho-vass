@@ -19,7 +19,7 @@
   padding-top: rem(35);
   margin: 0;
   overflow: hidden;
-  background: url('./images/Logo_Search.png') no-repeat;
+  background: url("./images/Logo_Search.png") no-repeat;
   background-size: rem(80);
 }
 
@@ -36,8 +36,8 @@
 .logout {
   margin-right: rem(8);
   margin-left: rem(20);
-  font-family: 'Myriad Pro Semibold'; 
-  color:#002d62;
+  font-family: "Myriad Pro Semibold";
+  color: #002d62;
   font-size: rem(14);
   display: inline;
   padding-top: rem(2);
@@ -69,22 +69,23 @@
 }
 
 .label__input {
-  font-family: 'Myriad Pro Semibold';  
+  font-family: "Myriad Pro Semibold";
   color: white;
   font-size: rem(13);
   padding: rem(16) rem(0) rem(6) rem(14);
 }
 
-.input {
+.input__search {
+  border: none;
   height: rem(53);
   width: rem(292);
   border-radius: 5px;
   background-color: #ffffff;
   margin: rem(0) rem(14) rem(14) rem(14);
   padding: rem(0) rem(0) rem(0) rem(13);
-  font-family: 'Myriad Pro Regular';  
-  font-weight: 200;  
-  color:#002d62;
+  font-family: "Myriad Pro Regular";
+  font-weight: 200;
+  color: #002d62;
   text-transform: uppercase;
   font-size: rem(17);
 }
@@ -120,9 +121,9 @@
 }
 
 .item__name {
-  font-family: 'Myriad Pro Regular';  
+  font-family: "Myriad Pro Regular";
   font-weight: 200;
-  color:#002d62;
+  color: #002d62;
   font-size: rem(17);
   text-transform: uppercase;
   padding: rem(22) rem(11);
