@@ -2,40 +2,7 @@ import React from 'react';
 import './App.css';
 import Login from './components/Login';
 import Search from './components/Search';
-import { Route, Switch } from 'react-router-dom';
-
-const employeeArr = [
-  {
-    givenName: 'Pedro Javier',
-    sn: 'Perez Mora',
-    sAMAccountName: 'pedro.perez'
-  },
-  {
-    givenName: 'Francisco Javier',
-    sn: 'Pérez García',
-    sAMAccountName: 'javier.perezgarcia'
-  },
-  {
-    givenName: 'Javier',
-    sn: 'Perez Alonso',
-    sAMAccountName: 'javier.perez'
-  },
-  {
-    givenName: 'Javier',
-    sn: 'Perez Gonzalo',
-    sAMAccountName: 'javier.pgonzalo'
-  },
-  {
-    givenName: 'Juan Javier',
-    sn: 'Perez Ruiz',
-    sAMAccountName: 'juan.perez'
-  },
-  {
-    givenName: 'Javier',
-    sn: 'Perez Garcia',
-    sAMAccountName: 'jperez'
-  }
-];
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 class App extends React.Component {
   constructor(props) {
@@ -48,7 +15,9 @@ class App extends React.Component {
       nameArr: [],
       filterName: '',
       collapsibleId: null,
-      loginPassword: 'password'
+      loginPassword: 'password',
+      token: '',
+      login: false
     };
 
     this.valueInputEmail = '';
@@ -60,18 +29,22 @@ class App extends React.Component {
     this.handleInputEmail = this.handleInputEmail.bind(this);
     this.handleInputPassword = this.handleInputPassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.getUsers = this.getUsers.bind(this);
   }
 
-  componentDidMount() {
-    const newArr = employeeArr.map((item, index) => {
-      return { ...item, id: index };
-    });
-    this.setState({ nameArr: newArr });
-  }
+  // componentDidMount() {
+  //   const newArr = employeeArr.map((item, index) => {
+  //     return { ...item, id: index };
+  //   });
+  //   this.setState({ nameArr: newArr });
+  // }
 
   handleFilter(event) {
     const currentValue = event.currentTarget.value;
     this.setState({ filterName: currentValue, collapsibleId: null });
+    if (currentValue.length >= 3) {
+      this.getUsers(currentValue);
+    }
   }
 
   handleCollapsible(event) {
@@ -122,16 +95,23 @@ class App extends React.Component {
       .then(response => response.json())
       .then(data => {
         const dataToken = data.user.token;
-        return fetch('https://whoiswho.vass.es/api/employees?cn=Samuel', {
-          method: 'GET',
-          headers: {
-            Authorization: `Token ${dataToken}`
-          }
-        })
-          .then(response => response.json())
-          .then(dota => console.log(dota));
+        if (dataToken !== '') {
+          this.setState({ login: true, token: dataToken });
+        }
       });
   };
+
+  getUsers(filterName) {
+    fetch(`https://whoiswho.vass.es/api/employees?cn=${filterName}`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Token ${this.state.token}`,
+        'content-Type': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then(users => this.setState({ nameArr: users }));
+  }
 
   render() {
     const { nameArr, filterName, collapsibleId, loginPassword } = this.state;
@@ -140,15 +120,19 @@ class App extends React.Component {
         <Route
           exact
           path="/"
-          render={() => (
-            <Login
-              changePassword={this.handlePassword}
-              passwordState={loginPassword}
-              handleInputEmail={this.handleInputEmail}
-              handleInputPassword={this.handleInputPassword}
-              onSubmit={this.onSubmit}
-            />
-          )}
+          render={() =>
+            this.state.login === true ? (
+              <Redirect from="/" to="/search" />
+            ) : (
+              <Login
+                changePassword={this.handlePassword}
+                passwordState={loginPassword}
+                handleInputEmail={this.handleInputEmail}
+                handleInputPassword={this.handleInputPassword}
+                onSubmit={this.onSubmit}
+              />
+            )
+          }
         />
         <Route
           path="/search"

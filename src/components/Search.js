@@ -4,8 +4,13 @@ import PropTypes from 'prop-types';
 import logout from '../images/Salir.png';
 
 class Search extends React.Component {
+  // componentDidMount() {
+  //   this.props.onSubmit();
+  // }
   render() {
-    const { filterName, nameArr, collapsibleId } = this.props;
+    const { filterName, nameArr, collapsibleId, handleFilter } = this.props;
+    console.log('---->', nameArr);
+    console.log('---->', filterName);
     if (filterName === '') {
       return (
         <div className="main__container">
@@ -15,7 +20,7 @@ class Search extends React.Component {
             </label>
             <div className="search">
               <input
-                onChange={this.handleFilter}
+                onChange={handleFilter}
                 className="input"
                 name="filterEmployee"
                 id="filterEmployee"
@@ -45,7 +50,7 @@ class Search extends React.Component {
               </label>
               <div className="search">
                 <input
-                  onChange={this.handleFilter}
+                  onChange={handleFilter}
                   className="input"
                   name="filterEmployee"
                   id="filterEmployee"
@@ -87,7 +92,7 @@ class Search extends React.Component {
             </label>
             <div className="search">
               <input
-                onChange={this.handleFilter}
+                onChange={handleFilter}
                 className="input"
                 name="filterEmployee"
                 id="filterEmployee"

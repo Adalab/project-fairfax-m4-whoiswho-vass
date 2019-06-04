@@ -3,59 +3,6 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class Login extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {};
-
-  //   this.valueInputEmail = '';
-  //   this.valueInputPassword = '';
-
-  //   this.handleInputEmail = this.handleInputEmail.bind(this);
-  //   this.handleInputPassword = this.handleInputPassword.bind(this);
-  //   this.onSubmit = this.onSubmit.bind(this);
-  // }
-
-  // handleInputEmail(event) {
-  //   this.valueInputEmail = event.currentTarget.value;
-  //   this.setState({
-  //     user: {
-  //       email: this.valueInputEmail,
-  //       password: this.valueInputPassword
-  //     }
-  //   });
-  // }
-
-  // handleInputPassword(event) {
-  //   this.valueInputPassword = event.currentTarget.value;
-  //   this.setState({
-  //     user: {
-  //       email: this.valueInputEmail,
-  //       password: this.valueInputPassword
-  //     }
-  //   });
-  // }
-
-  // onSubmit = event => {
-  //   event.preventDefault();
-  //   fetch('https://whoiswho.vass.es/api/users/login', {
-  //     method: 'POST',
-  //     body: JSON.stringify(this.state),
-  //     headers: { 'content-Type': 'application/json' }
-  //   })
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       const dataToken = data.user.token;
-  //       return fetch('https://whoiswho.vass.es/api/employees?cn=Samuel', {
-  //         method: 'GET',
-  //         headers: {
-  //           Authorization: `Token ${dataToken}`
-  //         }
-  //       })
-  //         .then(response => response.json())
-  //         .then(dota => console.log(dota));
-  //     });
-  // };
-
   render() {
     const {
       handleInputEmail,
