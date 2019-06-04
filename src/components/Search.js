@@ -1,75 +1,28 @@
 import React from 'react';
-import Detail from './Detail';
+// import Detail from './Detail';
 import PropTypes from 'prop-types';
-import logout from './images/Salir.png';
-
-
+// import logout from '../images/Salir.png';
 
 class Search extends React.Component {
-  render () {
-    const { filterName, nameArr, collapsibleId } = this.props;
+  render() {
+    const { filterName, nameArr, handleFilter } = this.props;
+
     if (filterName === '') {
       return (
         <div className="main__container">
           <div className="input__container">
-            <label className="label__input" htmlFor="filterEmployee">Campo de búsqueda</label>
+            <label className="label__input" htmlFor="filterEmployee">
+              Campo de búsqueda
+            </label>
             <div className="search">
               <input
-                onChange={this.handleFilter}
+                onChange={handleFilter}
                 className="input"
                 name="filterEmployee"
                 id="filterEmployee"
                 type="text"
               />
-              <i className="fas fa-search"></i>
-            </div>
-          </div>
-        </div>
-      );
-    } else if (filterName === '*') {
-      return (
-        <div className="app__who-is-who">
-          <header className="list__header">
-            <h1 className="list__title">VASS</h1>
-            <div className="logout__container">
-              <a className="link__logout" href="#">
-                <p className="logout">Salir</p>
-                <img className="logout-arrow" src={logout} alt=""/>
-              </a>
-            </div>
-          </header>
-          <div className="main__container">
-            <div className="input__container">
-              <label className="label__input" htmlFor="filterEmployee">Campo de búsqueda</label>
-              <div className="search">
-                <input
-                  onChange={this.handleFilter}
-                  className="input"
-                  name="filterEmployee"
-                  id="filterEmployee"
-                  type="text"
-                />
-                <i className="fas fa-search"></i>
-              </div>
-            </div>
-            <div className="list__container">
-              <ul className="employee__list">
-                {nameArr.map(item => (
-                  <li key={item.id} className="employee__list--item">
-                    <div
-                      className="item__container"
-                      onClick={this.handleCollapsible}
-                      id={item.id}
-                    >
-                      <h2 className="item__name">
-                        {item.givenName} {item.sn}
-                      </h2>
-                      <i className="fas fa-chevron-down"></i>
-                    </div>
-                    {collapsibleId === item.id ? <Detail collapsibleId={collapsibleId} /> : null}
-                  </li>
-                ))}
-              </ul>
+              <i className="fas fa-search" />
             </div>
           </div>
         </div>
@@ -78,16 +31,18 @@ class Search extends React.Component {
       return (
         <div className="main__container">
           <div className="input__container">
-            <label className="label__input" htmlFor="filterEmployee">Campo de búsqueda</label>
+            <label className="label__input" htmlFor="filterEmployee">
+              Campo de búsqueda
+            </label>
             <div className="search">
               <input
-                onChange={this.handleFilter}
+                onChange={handleFilter}
                 className="input"
                 name="filterEmployee"
                 id="filterEmployee"
                 type="text"
               />
-              <i className="fas fa-search"></i>
+              <i className="fas fa-search" />
             </div>
           </div>
           <div className="list__container">
@@ -106,7 +61,10 @@ class Search extends React.Component {
                     )
                 )
                 .map(item => (
-                  <li key={item.id} className="employee__list--item">
+                  <li
+                    key={item.sAMAccountName}
+                    className="employee__list--item"
+                  >
                     <div
                       className="item__container"
                       onClick={this.handleCollapsible}
@@ -115,9 +73,11 @@ class Search extends React.Component {
                       <h2 className="item__name">
                         {item.givenName} {item.sn}
                       </h2>
-                      <i className="fas fa-chevron-down"></i>
+                      <i className="fas fa-chevron-down" />
                     </div>
-                    {collapsibleId === item.id ? <Detail collapsibleId={collapsibleId} /> : null}
+                    {/* {collapsibleId === item.id ? (
+                      <Detail collapsibleId={collapsibleId} />
+                    ) : null} */}
                   </li>
                 ))}
             </ul>
@@ -131,9 +91,7 @@ class Search extends React.Component {
 Search.propTypes = {
   filterName: PropTypes.string,
   nameArr: PropTypes.arrayOf(PropTypes.object).isRequired,
-  collapsibleId: PropTypes.number,
-  handleFilter: PropTypes.func.isRequired,
-  handleCollapsible: PropTypes.func.isRequired
-}
+  handleFilter: PropTypes.func.isRequired
+};
 
 export default Search;
