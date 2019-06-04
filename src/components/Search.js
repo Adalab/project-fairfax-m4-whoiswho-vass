@@ -23,7 +23,7 @@ class Search extends React.Component {
             <div className="list__title">VASS</div>
             <div className="list__greeting">
               <i className="far fa-user"></i>
-              p
+              <p className="list__greeting--user">Hola USUARIO</p>
             </div>
             <div className="logout__container" >
               <p onClick={handleLogout} className="logout" >Salir</p>  
@@ -55,6 +55,10 @@ class Search extends React.Component {
         <div className="search__container">
           <header className="list__header">
             <div className="list__title">VASS</div>
+            <div className="list__greeting">
+              <i className="far fa-user"></i>
+              <p className="list__greeting--user">Hola USUARIO</p>
+            </div>
             <div className="logout__container" >
               <p onClick={handleLogout} className="logout" >Salir</p>  
               <div onClick={handleLogout} className="logout-arrow"/>   

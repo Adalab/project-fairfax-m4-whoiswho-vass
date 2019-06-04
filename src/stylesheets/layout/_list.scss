@@ -44,6 +44,16 @@
   }
 }
 
+.list__greeting {
+  display: none;
+  @include mq($bp_desktop) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+}
+
 .logout__container {
   border-left: solid rem(1) #50bbeb;
   padding-left: rem(20);
