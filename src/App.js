@@ -18,7 +18,8 @@ class App extends React.Component {
       eyePassword: 'password',
       token: JSON.parse(localStorage.getItem('token')) || '',
       isAuthenticated: false,
-      isErrorVisible: false
+      isErrorVisible: false,
+      isErrorVisibleSearch: false
     };
 
     this.valueInputEmail = '';
@@ -106,11 +107,14 @@ class App extends React.Component {
       }
     })
       .then(response => response.json())
-      .then(users => this.setState({ nameArr: users }));
+      .then(users => this.setState({ nameArr: users }))
+      .catch(error => this.setState(prevState => ({
+        isErrorVisibleSearch: prevState.isErrorVisibleSearch === false ? true : false
+      })))
   }
 
   render() {
-    const { nameArr, filterName, eyePassword, isErrorVisible } = this.state;
+    const { nameArr, filterName, eyePassword, isErrorVisible, isErrorVisibleSearch } = this.state;
     return (
       <Switch>
         <Route
@@ -142,6 +146,7 @@ class App extends React.Component {
               filterName={filterName}
               nameArr={nameArr}
               handleFilter={this.handleFilter}
+              isErrorVisibleSearch={isErrorVisibleSearch}
             />
             )
           )}

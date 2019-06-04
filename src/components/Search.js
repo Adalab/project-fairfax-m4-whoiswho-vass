@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 class Search extends React.Component {
   render() {
-    const { filterName, nameArr, handleFilter } = this.props;
+    const { filterName, nameArr, handleFilter, isErrorVisibleSearch } = this.props;
 
     if (filterName === '') {
       return (
@@ -44,6 +44,7 @@ class Search extends React.Component {
               />
               <i className="fas fa-search" />
             </div>
+            {isErrorVisibleSearch ? <p className="error__message"> <i className="fas fa-exclamation-circle"></i> No hay ningún resultado que coincida con la búsqueda.</p> : null}
           </div>
           <div className="list__container">
             <ul className="employee__list">
