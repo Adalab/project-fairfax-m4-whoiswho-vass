@@ -1,7 +1,7 @@
 import React from 'react';
 import Detail from './Detail';
 import PropTypes from 'prop-types';
-// import logout from '../images/Salir.png';
+import logout from '../images/Salir.png';
 
 class Search extends React.Component {
   render() {
@@ -17,6 +17,13 @@ class Search extends React.Component {
     if (filterName === '') {
       return (
         <div className="main__container">
+          <header className="list__header">
+            <h1 className="list__title">VASS</h1>
+            <div className="logout__container">
+              <p className="logout">Salir</p>
+              <img className="logout__arrow" src={logout} alt="" />
+            </div>
+          </header>
           <div className="input__container">
             <label className="label__input" htmlFor="filterEmployee">
               Campo de búsqueda
@@ -37,6 +44,13 @@ class Search extends React.Component {
     } else {
       return (
         <div className="main__container">
+          <header className="list__header">
+            <h1 className="list__title">VASS</h1>
+            <div className="logout__container">
+              <p className="logout">Salir</p>
+              <img className="logout__arrow" src={logout} alt="" />
+            </div>
+          </header>
           <div className="input__container">
             <label className="label__input" htmlFor="filterEmployee">
               Campo de búsqueda
