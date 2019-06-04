@@ -1,18 +1,18 @@
 import React from 'react';
 import Detail from './Detail';
 import PropTypes from 'prop-types';
-import logout from './images/Salir.png';
-
-
+import logout from '../images/Salir.png';
 
 class Search extends React.Component {
-  render () {
+  render() {
     const { filterName, nameArr, collapsibleId } = this.props;
     if (filterName === '') {
       return (
         <div className="main__container">
           <div className="input__container">
-            <label className="label__input" htmlFor="filterEmployee">Campo de búsqueda</label>
+            <label className="label__input" htmlFor="filterEmployee">
+              Campo de búsqueda
+            </label>
             <div className="search">
               <input
                 onChange={this.handleFilter}
@@ -21,7 +21,7 @@ class Search extends React.Component {
                 id="filterEmployee"
                 type="text"
               />
-              <i className="fas fa-search"></i>
+              <i className="fas fa-search" />
             </div>
           </div>
         </div>
@@ -34,13 +34,15 @@ class Search extends React.Component {
             <div className="logout__container">
               <a className="link__logout" href="#">
                 <p className="logout">Salir</p>
-                <img className="logout-arrow" src={logout} alt=""/>
+                <img className="logout-arrow" src={logout} alt="" />
               </a>
             </div>
           </header>
           <div className="main__container">
             <div className="input__container">
-              <label className="label__input" htmlFor="filterEmployee">Campo de búsqueda</label>
+              <label className="label__input" htmlFor="filterEmployee">
+                Campo de búsqueda
+              </label>
               <div className="search">
                 <input
                   onChange={this.handleFilter}
@@ -49,7 +51,7 @@ class Search extends React.Component {
                   id="filterEmployee"
                   type="text"
                 />
-                <i className="fas fa-search"></i>
+                <i className="fas fa-search" />
               </div>
             </div>
             <div className="list__container">
@@ -64,9 +66,11 @@ class Search extends React.Component {
                       <h2 className="item__name">
                         {item.givenName} {item.sn}
                       </h2>
-                      <i className="fas fa-chevron-down"></i>
+                      <i className="fas fa-chevron-down" />
                     </div>
-                    {collapsibleId === item.id ? <Detail collapsibleId={collapsibleId} /> : null}
+                    {collapsibleId === item.id ? (
+                      <Detail collapsibleId={collapsibleId} />
+                    ) : null}
                   </li>
                 ))}
               </ul>
@@ -78,7 +82,9 @@ class Search extends React.Component {
       return (
         <div className="main__container">
           <div className="input__container">
-            <label className="label__input" htmlFor="filterEmployee">Campo de búsqueda</label>
+            <label className="label__input" htmlFor="filterEmployee">
+              Campo de búsqueda
+            </label>
             <div className="search">
               <input
                 onChange={this.handleFilter}
@@ -87,7 +93,7 @@ class Search extends React.Component {
                 id="filterEmployee"
                 type="text"
               />
-              <i className="fas fa-search"></i>
+              <i className="fas fa-search" />
             </div>
           </div>
           <div className="list__container">
@@ -115,9 +121,11 @@ class Search extends React.Component {
                       <h2 className="item__name">
                         {item.givenName} {item.sn}
                       </h2>
-                      <i className="fas fa-chevron-down"></i>
+                      <i className="fas fa-chevron-down" />
                     </div>
-                    {collapsibleId === item.id ? <Detail collapsibleId={collapsibleId} /> : null}
+                    {collapsibleId === item.id ? (
+                      <Detail collapsibleId={collapsibleId} />
+                    ) : null}
                   </li>
                 ))}
             </ul>
@@ -134,6 +142,6 @@ Search.propTypes = {
   collapsibleId: PropTypes.number,
   handleFilter: PropTypes.func.isRequired,
   handleCollapsible: PropTypes.func.isRequired
-}
+};
 
 export default Search;
