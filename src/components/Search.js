@@ -21,18 +21,20 @@ class Search extends React.Component {
         <div className="main__container">
           <header className="list__header">
             <h1 className="list__tittle">VASS</h1>
-            <div className="user__container">
-              <i className="far fa-user" />
-              <p className="user__text">{`Hola, ${user.email}`}</p>
-            </div>
-            <div className="logout__container">
-              <p className="logout" onClick={handleLogout}>
-                Salir
-              </p>
-              <i
-                className="fas fa-sign-out-alt logout__arrow"
-                onClick={handleLogout}
-              />
+            <div className="container__all">
+              <div className="user__container">
+                <i className="far fa-user" />
+                <p className="user__text">{`Hola, ${user.email}`}</p>
+              </div>
+              <div className="logout__container">
+                <p className="logout" onClick={handleLogout}>
+                  Salir
+                </p>
+                <i
+                  className="fas fa-sign-out-alt logout__arrow"
+                  onClick={handleLogout}
+                />
+              </div>
             </div>
           </header>
           <div className="input__container">

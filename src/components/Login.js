@@ -24,7 +24,7 @@ class Login extends React.Component {
             <input
               type="text"
               id="input__user"
-              className="input__item input__user"
+              className={`input__item input__user ${isErrorVisible === true ? 'red' : ''}`}
               onChange={handleInputEmail}
             />
             <label
@@ -37,7 +37,7 @@ class Login extends React.Component {
               <input
                 type={eyePassword}
                 id="input__password"
-                className="input__item input__password"
+                className={`input__item input__password ${isErrorVisible === true ? 'red' : ''}`}
                 onChange={handleInputPassword}
               />
               <i

@@ -40,7 +40,7 @@
     display: flex;
     color: white;
     font-family: "Myriad Pro Regular";
-    margin-left: rem(500);
+    margin-right: rem(30);
   }
 }
 
@@ -272,4 +272,10 @@
     font-weight: normal;
     padding: rem(10) 0 0 rem(15);
   }
+}
+
+.container__all {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
