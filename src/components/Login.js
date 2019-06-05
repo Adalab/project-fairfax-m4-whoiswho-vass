@@ -47,8 +47,18 @@ class Login extends React.Component {
                 onClick={handleEyePassword}
               />
             </div>
-            {isErrorVisible ? <p className="error__message"> <i className="fas fa-exclamation-circle"></i> El nombre de usuario o la contraseña son incorrectos.</p> : null}
-            <input type="submit" value="Entrar" className="input__submit" />
+            {isErrorVisible ? (
+              <p className="error__message">
+                {' '}
+                <i className="fas fa-exclamation-circle" /> El nombre de usuario
+                o la contraseña son incorrectos.
+              </p>
+            ) : null}
+            <input
+              type="submit"
+              value="Entrar"
+              className={`input__submit${isErrorVisible ? '-pad' : ''}`}
+            />
           </div>
         </form>
         <div className="who__container">
