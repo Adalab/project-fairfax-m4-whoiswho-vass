@@ -27,9 +27,6 @@ class Search extends React.Component {
             </div>
           </header>
           <div className="input__container">
-            <p className="logout" onClick={handleLogout}>
-              SALIR
-            </p>
             <label className="label__input" htmlFor="filterEmployee">
               Campo de búsqueda
             </label>
@@ -40,6 +37,7 @@ class Search extends React.Component {
                 name="filterEmployee"
                 id="filterEmployee"
                 type="text"
+                value={filterName}
               />
               <i className="fas fa-search" />
             </div>
@@ -67,6 +65,7 @@ class Search extends React.Component {
                 name="filterEmployee"
                 id="filterEmployee"
                 type="text"
+                value={filterName}
               />
               <i className="fas fa-search" />
             </div>
@@ -81,18 +80,18 @@ class Search extends React.Component {
           <div className="list__container">
             <ul className="employee__list">
               {nameArr
-                .filter(item =>
-                  `${item.givenName} ${item.sn}`
-                    .toLocaleLowerCase()
-                    .normalize('NFD')
-                    .replace(/[\u0300-\u036f]/g, '')
-                    .includes(
-                      filterName
-                        .toLocaleLowerCase()
-                        .normalize('NFD')
-                        .replace(/[\u0300-\u036f]/g, '')
-                    )
-                )
+                // .filter(item =>
+                //   `${item.givenName} ${item.sn}`
+                //     .toLocaleLowerCase()
+                //     .normalize('NFD')
+                //     .replace(/[\u0300-\u036f]/g, '')
+                //     .includes(
+                //       filterName
+                //         .toLocaleLowerCase()
+                //         .normalize('NFD')
+                //         .replace(/[\u0300-\u036f]/g, '')
+                //     )
+                // )
                 .map(item => (
                   <li
                     key={item.sAMAccountName}
@@ -106,7 +105,13 @@ class Search extends React.Component {
                       <h2 className="item__name">
                         {item.givenName} {item.sn}
                       </h2>
-                      <i className="fas fa-chevron-down" />
+                      <i
+                        className={`fas fa-chevron-down ${
+                          collapsibleId === item.sAMAccountName
+                            ? 'upside-down'
+                            : null
+                        }`}
+                      />
                     </div>
                     {collapsibleId === item.sAMAccountName ? (
                       <Detail
