@@ -6,6 +6,7 @@ import logout from '../images/Salir.png';
 class Search extends React.Component {
   render() {
     const {
+      user,
       filterName,
       nameArr,
       handleFilter,
@@ -21,9 +22,18 @@ class Search extends React.Component {
         <div className="main__container">
           <header className="list__header">
             <h1 className="list__tittle">VASS</h1>
+            <div className="user__container">
+              <i class="far fa-user" />
+              <p className="user__text">{`Hola, ${user.email}`}</p>
+            </div>
             <div className="logout__container">
-              <p className="logout">Salir</p>
-              <img className="logout__arrow" src={logout} alt="" />
+              <p className="logout" onClick={handleLogout}>
+                Salir
+              </p>
+              <i
+                class="fas fa-sign-out-alt logout__arrow"
+                onClick={handleLogout}
+              />
             </div>
           </header>
           <div className="input__container">
@@ -42,6 +52,16 @@ class Search extends React.Component {
               <i className="fas fa-search" />
             </div>
           </div>
+          <div className="who__container--search">
+            <h2 className="who__title--search">
+              <span className="who__span--search">Who</span>{' '}
+              <span className="is__span--search">is</span>{' '}
+              <span className="who__span--search">Who</span>
+            </h2>
+          </div>
+          <footer className="login__footer--search">
+            VASS - Copyright © 2019 Todos los derechos reservados
+          </footer>
         </div>
       );
     } else {
@@ -49,9 +69,18 @@ class Search extends React.Component {
         <div className="main__container">
           <header className="list__header">
             <h1 className="list__tittle">VASS</h1>
+            <div className="user__container">
+              <i class="far fa-user" />
+              <p className="user__text">{`Hola, ${user.email}`}</p>
+            </div>
             <div className="logout__container">
-              <p className="logout">Salir</p>
-              <img className="logout__arrow" src={logout} alt="" />
+              <p className="logout" onClick={handleLogout}>
+                Salir
+              </p>
+              <i
+                class="fas fa-sign-out-alt logout__arrow"
+                onClick={handleLogout}
+              />
             </div>
           </header>
           <div className="input__container">
@@ -123,6 +152,16 @@ class Search extends React.Component {
                 ))}
             </ul>
           </div>
+          <div className="who__container--search">
+            <h2 className="who__title--search">
+              <span className="who__span--search">Who</span>{' '}
+              <span className="is__span--search">is</span>{' '}
+              <span className="who__span--search">Who</span>
+            </h2>
+          </div>
+          <footer className="login__footer--search">
+            VASS - Copyright © 2019 Todos los derechos reservados
+          </footer>
         </div>
       );
     }
