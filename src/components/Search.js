@@ -1,11 +1,12 @@
 import React from 'react';
 import Detail from './Detail';
 import PropTypes from 'prop-types';
-// import {logout} from '../images/Salir.png';
+import logout from '../images/Salir.png';
 
 class Search extends React.Component {
   render() {
     const {
+      user,
       filterName,
       nameArr,
       handleFilter,
@@ -19,7 +20,22 @@ class Search extends React.Component {
     if (filterName === '') {
       return (
         <div className="main__container">
-          <p onClick={handleLogout} className="logout" >Salir</p>  
+          <header className="list__header">
+            <h1 className="list__tittle">VASS</h1>
+            <div className="user__container">
+              <i class="far fa-user" />
+              <p className="user__text">{`Hola, ${user.email}`}</p>
+            </div>
+            <div className="logout__container">
+              <p className="logout" onClick={handleLogout}>
+                Salir
+              </p>
+              <i
+                class="fas fa-sign-out-alt logout__arrow"
+                onClick={handleLogout}
+              />
+            </div>
+          </header>
           <div className="input__container">
             <label className="label__input" htmlFor="filterEmployee">
               Campo de búsqueda
@@ -27,7 +43,7 @@ class Search extends React.Component {
             <div className="search">
               <input
                 onChange={handleFilter}
-                className="input"
+                className="input__search"
                 name="filterEmployee"
                 id="filterEmployee"
                 type="text"
@@ -36,12 +52,37 @@ class Search extends React.Component {
               <i className="fas fa-search" />
             </div>
           </div>
+          <div className="who__container--search">
+            <h2 className="who__title--search">
+              <span className="who__span--search">Who</span>{' '}
+              <span className="is__span--search">is</span>{' '}
+              <span className="who__span--search">Who</span>
+            </h2>
+          </div>
+          <footer className="login__footer--search">
+            VASS - Copyright © 2019 Todos los derechos reservados
+          </footer>
         </div>
       );
     } else {
       return (
         <div className="main__container">
-          <p onClick={handleLogout} className="logout" >Salir</p>  
+          <header className="list__header">
+            <h1 className="list__tittle">VASS</h1>
+            <div className="user__container">
+              <i class="far fa-user" />
+              <p className="user__text">{`Hola, ${user.email}`}</p>
+            </div>
+            <div className="logout__container">
+              <p className="logout" onClick={handleLogout}>
+                Salir
+              </p>
+              <i
+                class="fas fa-sign-out-alt logout__arrow"
+                onClick={handleLogout}
+              />
+            </div>
+          </header>
           <div className="input__container">
             <label className="label__input" htmlFor="filterEmployee">
               Campo de búsqueda
@@ -49,7 +90,7 @@ class Search extends React.Component {
             <div className="search">
               <input
                 onChange={handleFilter}
-                className="input"
+                className="input__search"
                 name="filterEmployee"
                 id="filterEmployee"
                 type="text"
@@ -58,7 +99,7 @@ class Search extends React.Component {
               <i className="fas fa-search" />
             </div>
             {isErrorVisibleSearch ? (
-              <p className="error__message">
+              <p className="error__message--search">
                 {' '}
                 <i className="fas fa-exclamation-circle" /> No hay ningún
                 resultado que coincida con la búsqueda.
@@ -93,7 +134,13 @@ class Search extends React.Component {
                       <h2 className="item__name">
                         {item.givenName} {item.sn}
                       </h2>
-                      <i className={`fas fa-chevron-down ${collapsibleId === item.sAMAccountName ? 'upside-down' : null}`} />
+                      <i
+                        className={`fas fa-chevron-down ${
+                          collapsibleId === item.sAMAccountName
+                            ? 'upside-down'
+                            : null
+                        }`}
+                      />
                     </div>
                     {collapsibleId === item.sAMAccountName ? (
                       <Detail
@@ -105,8 +152,18 @@ class Search extends React.Component {
                 ))}
             </ul>
           </div>
+          <div className="who__container--search">
+            <h2 className="who__title--search">
+              <span className="who__span--search">Who</span>{' '}
+              <span className="is__span--search">is</span>{' '}
+              <span className="who__span--search">Who</span>
+            </h2>
+          </div>
+          <footer className="login__footer--search">
+            VASS - Copyright © 2019 Todos los derechos reservados
+          </footer>
         </div>
-    );
+      );
     }
   }
 }

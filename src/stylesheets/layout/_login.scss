@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   padding: rem(32) 0 rem(100) 0;
+
   @include mq($bp_desktop) {
     display: block;
     padding: rem(30) 0 rem(55) rem(50);

@@ -110,9 +110,11 @@ class App extends React.Component {
       }
     })
       .then(response => response.json())
-      .then(users => this.setState({ nameArr: users, isErrorVisibleSearch: false }))
-      .catch(error => 
-        this.setState({isErrorVisibleSearch: true, nameArr: []})
+      .then(users =>
+        this.setState({ nameArr: users, isErrorVisibleSearch: false })
+      )
+      .catch(error =>
+        this.setState({ isErrorVisibleSearch: true, nameArr: [] })
       );
   }
 
@@ -127,7 +129,7 @@ class App extends React.Component {
       filterName: '',
       collapsibleId: null,
       eyePassword: 'password',
-      token:'',
+      token: '',
       isAuthenticated: false,
       isErrorVisible: false,
       isErrorVisibleSearch: false
@@ -148,6 +150,7 @@ class App extends React.Component {
 
   render() {
     const {
+      user,
       nameArr,
       filterName,
       eyePassword,
@@ -184,6 +187,7 @@ class App extends React.Component {
               <Redirect from="/search" to="/" />
             ) : (
               <Search
+                user={user}
                 filterName={filterName}
                 nameArr={nameArr}
                 handleFilter={this.handleFilter}
