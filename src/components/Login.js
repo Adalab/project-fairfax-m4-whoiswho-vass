@@ -14,7 +14,7 @@ class Login extends React.Component {
     return (
       <React.Fragment>
         <header className="login__header">
-          <h1 className="login__title">VASS</h1>
+          <a className="login__title" href="https://www.vass.es/"><h1 className="login__title">VASS</h1></a>
         </header>
         <form className="login__container" onSubmit={onSubmit}>
           <div className="inputs__container">
@@ -68,7 +68,11 @@ class Login extends React.Component {
 
 Login.propTypes = {
   handleEyePassword: PropTypes.func.isRequired,
-  eyePassword: PropTypes.string.isRequired
+  eyePassword: PropTypes.string.isRequired,
+  handleInputEmail: PropTypes.func.isRequired,
+  handleInputPassword: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  isErrorVisible: PropTypes.bool.isRequired
 };
 
 export default Login;

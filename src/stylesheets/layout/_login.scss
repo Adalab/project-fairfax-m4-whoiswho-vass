@@ -23,6 +23,19 @@
   }
 }
 
+.login__title--link {
+  height: rem(120);
+  width: rem(200);
+  padding-top: rem(120);
+  overflow: hidden;
+  cursor: pointer;
+  @include mq($bp_desktop) {
+    width: rem(150);
+    padding-top: rem(60);
+    background-size: rem(150);
+  }
+}
+
 .login__container {
   display: flex;
   flex-direction: column;
