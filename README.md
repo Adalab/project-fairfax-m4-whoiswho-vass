@@ -41,9 +41,6 @@ Verónica Enamorado - [veroena](https://github.com/veroena)
       ' - images
           ' - Background.png
           ' - login-mobile.png
-          ' - search-mobile.png
-          ' - login-desktop.png
-          ' - search-desktop.png
           ' - Logo_Login.png
           ' - Logo_Search-Desk.png
           ' - Logo_Search.png
@@ -55,10 +52,7 @@ Verónica Enamorado - [veroena](https://github.com/veroena)
 ```
 
 ## 🎁 Our thanks
-To the VASS team that made this happen, Javier Pérez García, Mónica Hurtado, Samuel Berigüete and Abel Sánchez.
+To the VASS team that made this happen, Javier Pérez García, Mónica Hurtado, Samuel Berigüete, Abel Sánchez and Manuel.
 And to you for taking interest in this project! If you have any questions or ideas to improve it, don't hesitate to contact us through the Issues. 
 
 ![login mobile](src/images/login-mobile.png)
-![login mobile](src/images/search-mobile.png)
-![login mobile](src/images/login-desktop.png)
-![login mobile](src/images/search-desktop.png)
