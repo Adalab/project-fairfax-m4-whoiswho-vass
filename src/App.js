@@ -9,7 +9,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       user: {
-        email: '',
+        email: JSON.parse(localStorage.getItem('email')) || '',
         password: ''
       },
       nameArr: [],
@@ -96,6 +96,7 @@ class App extends React.Component {
         if (dataToken !== '') {
           this.setState({ isAuthenticated: true, token: dataToken });
           localStorage.setItem('token', JSON.stringify(dataToken));
+          localStorage.setItem('email', JSON.stringify(data.user.email));
         }
       })
       .catch(error => this.setState({ isErrorVisible: true }));
@@ -135,6 +136,7 @@ class App extends React.Component {
       isErrorVisibleSearch: false
     });
     localStorage.removeItem('token');
+    localStorage.removeItem('email');
   }
 
   getUserDetail(collapsibleId) {
