@@ -2,9 +2,10 @@
   display: flex;
   justify-content: center;
   padding: rem(32) 0 rem(100) 0;
+
   @include mq($bp_desktop) {
     display: block;
-    padding: rem(40) 0 rem(100) rem(50);
+    padding: rem(30) 0 rem(55) rem(50);
   }
 }
 
@@ -16,6 +17,19 @@
   background: url("./images/Logo_Login.png") no-repeat;
   background-position: center;
   background-size: rem(200);
+  @include mq($bp_desktop) {
+    width: rem(150);
+    padding-top: rem(60);
+    background-size: rem(150);
+  }
+}
+
+.login__title--link {
+  height: rem(120);
+  width: rem(200);
+  padding-top: rem(120);
+  overflow: hidden;
+  cursor: pointer;
   @include mq($bp_desktop) {
     width: rem(150);
     padding-top: rem(60);
@@ -47,6 +61,7 @@
   border: none;
   border-radius: rem(5);
   padding: rem(5);
+  padding-left: rem(10);
 }
 
 .label__item {
@@ -60,7 +75,21 @@
 
 .input__submit {
   border: none;
-  margin-top: rem(41);
+  margin-top: rem(52);
+  height: rem(50);
+  background-color: #002d62;
+  border-radius: rem(5);
+  color: white;
+  font-size: rem(22);
+  font-family: "Myriad Pro Semibold";
+  @include mq($bp_desktop) {
+    margin-top: rem(61);
+  }
+}
+
+.input__submit-pad {
+  border: none;
+  margin-top: rem(0);
   height: rem(50);
   background-color: #002d62;
   border-radius: rem(5);
@@ -82,7 +111,22 @@
 }
 
 .fa-eye-slash {
-  left: 83.5%;
+  left: 83.4%;
+}
+
+.error__message {
+  padding: rem(12);
+  color: white;
+  font-size: rem(12);
+  width: rem(260);
+  @include mq($bp_desktop) {
+    font-size: rem(15);
+    padding-left: rem(30);
+  }
+}
+
+.fa-exclamation-circle {
+  padding-right: rem(5);
 }
 
 .who__container {
@@ -132,6 +176,10 @@
     font-family: "Myriad Pro Regular";
     font-size: rem(16);
     font-weight: normal;
-    padding: rem(40) 0 0 rem(15);
+    padding: rem(10) 0 0 rem(15);
   }
+}
+
+.red {
+  border: 1px solid red;
 }

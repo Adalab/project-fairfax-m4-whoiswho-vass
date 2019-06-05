@@ -14,7 +14,7 @@ class Login extends React.Component {
     return (
       <React.Fragment>
         <header className="login__header">
-          <h1 className="login__title">VASS</h1>
+          <a className="login__title" href="https://www.vass.es/"><h1 className="login__title">VASS</h1></a>
         </header>
         <form className="login__container" onSubmit={onSubmit}>
           <div className="inputs__container">
@@ -24,7 +24,7 @@ class Login extends React.Component {
             <input
               type="text"
               id="input__user"
-              className="input__item input__user"
+              className={`input__item input__user ${isErrorVisible === true ? 'red' : ''}`}
               onChange={handleInputEmail}
             />
             <label
@@ -37,7 +37,7 @@ class Login extends React.Component {
               <input
                 type={eyePassword}
                 id="input__password"
-                className="input__item input__password"
+                className={`input__item input__password ${isErrorVisible === true ? 'red' : ''}`}
                 onChange={handleInputPassword}
               />
               <i
@@ -47,8 +47,18 @@ class Login extends React.Component {
                 onClick={handleEyePassword}
               />
             </div>
-            {isErrorVisible ? <p className="error__message"> <i className="fas fa-exclamation-circle"></i> El nombre de usuario o la contraseña son incorrectos.</p> : null}
-            <input type="submit" value="Entrar" className="input__submit" />
+            {isErrorVisible ? (
+              <p className="error__message">
+                {' '}
+                <i className="fas fa-exclamation-circle" /> El nombre de usuario
+                o la contraseña son incorrectos.
+              </p>
+            ) : null}
+            <input
+              type="submit"
+              value="Entrar"
+              className={`input__submit${isErrorVisible ? '-pad' : ''}`}
+            />
           </div>
         </form>
         <div className="who__container">
@@ -68,7 +78,11 @@ class Login extends React.Component {
 
 Login.propTypes = {
   handleEyePassword: PropTypes.func.isRequired,
-  eyePassword: PropTypes.string.isRequired
+  eyePassword: PropTypes.string.isRequired,
+  handleInputEmail: PropTypes.func.isRequired,
+  handleInputPassword: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  isErrorVisible: PropTypes.bool.isRequired
 };
 
 export default Login;

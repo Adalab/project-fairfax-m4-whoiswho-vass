@@ -3,7 +3,7 @@
 @import "stylesheets/core/variables";
 @import "stylesheets/layout/login";
 @import "stylesheets/layout/detail";
-@import "stylesheets/layout/list";
+@import "stylesheets/layout/search";
 
 * {
   margin: 0;
@@ -14,7 +14,6 @@
 body {
   background: url("./images/Background.png") no-repeat;
   background-position: center;
-  background-size: cover;
   height: 100vh;
 }
 
@@ -87,3 +86,4 @@ body {
   font-weight: normal;
   src: local("Myriad Pro Bold Condensed Italic"), url("./fonts/MYRIADPRO-BOLDCONDIT.woff") format("woff");
 }
+
