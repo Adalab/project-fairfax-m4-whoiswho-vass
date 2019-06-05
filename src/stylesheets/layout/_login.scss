@@ -4,7 +4,7 @@
   padding: rem(32) 0 rem(100) 0;
   @include mq($bp_desktop) {
     display: block;
-    padding: rem(40) 0 rem(100) rem(50);
+    padding: rem(30) 0 rem(55) rem(50);
   }
 }
 
@@ -132,6 +132,6 @@
     font-family: "Myriad Pro Regular";
     font-size: rem(16);
     font-weight: normal;
-    padding: rem(40) 0 0 rem(15);
+    padding: rem(20) 0 0 rem(15);
   }
 }
