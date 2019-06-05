@@ -111,13 +111,6 @@
   padding: rem(16) rem(0) rem(6) rem(14);
 }
 
-.list__container {
-  width: rem(320);
-  padding: rem(0) rem(16);
-  box-shadow: rem(0) rem(13) rem(14) rem(-7) rgb(230, 228, 228);
-  background-color: #ffffff;
-}
-
 .input__search {
   border: none;
   height: rem(53);
@@ -155,6 +148,10 @@
     width: rem(900);
     height: rem(400);
   }
+}
+
+.hidden {
+  display: none;
 }
 
 .employee__list--item {

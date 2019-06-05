@@ -22,7 +22,7 @@ class Search extends React.Component {
           <header className="list__header">
             <h1 className="list__tittle">VASS</h1>
             <div className="user__container">
-              <i class="far fa-user" />
+              <i className="far fa-user" />
               <p className="user__text">{`Hola, ${user.email}`}</p>
             </div>
             <div className="logout__container">
@@ -30,7 +30,7 @@ class Search extends React.Component {
                 Salir
               </p>
               <i
-                class="fas fa-sign-out-alt logout__arrow"
+                className="fas fa-sign-out-alt logout__arrow"
                 onClick={handleLogout}
               />
             </div>
@@ -69,7 +69,7 @@ class Search extends React.Component {
           <header className="list__header">
             <h1 className="list__tittle">VASS</h1>
             <div className="user__container">
-              <i class="far fa-user" />
+              <i className="far fa-user" />
               <p className="user__text">{`Hola, ${user.email}`}</p>
             </div>
             <div className="logout__container">
@@ -77,7 +77,7 @@ class Search extends React.Component {
                 Salir
               </p>
               <i
-                class="fas fa-sign-out-alt logout__arrow"
+                className="fas fa-sign-out-alt logout__arrow"
                 onClick={handleLogout}
               />
             </div>
@@ -105,7 +105,7 @@ class Search extends React.Component {
               </p>
             ) : null}
           </div>
-          <div className="list__container">
+          <div className={`list__container ${nameArr.length === 0 ? 'hidden' : ''}`}>
             <ul className="employee__list">
               {nameArr
                 .map(item => (
