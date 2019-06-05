@@ -70,7 +70,7 @@ class Search extends React.Component {
               <i className="fas fa-search" />
             </div>
             {isErrorVisibleSearch ? (
-              <p className="error__message">
+              <p className="error__message--search">
                 {' '}
                 <i className="fas fa-exclamation-circle" /> No hay ningún
                 resultado que coincida con la búsqueda.
