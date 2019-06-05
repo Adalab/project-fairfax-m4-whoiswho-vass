@@ -9,13 +9,13 @@ class Detail extends React.Component {
           <div className="city">
             <p className="employee__detail--company">
               Empresa:{' '}
-              <span className="employee__detail--company-span">
+              <span className="employee__detail--company-span employee__detail-marg">
                 {detailArr.company}
               </span>
             </p>
             <p className="employee__detail--region">
               Región:{' '}
-              <span className="employee__detail--region-span">
+              <span className="employee__detail--region-span employee__detail-marg">
                 {detailArr.physicalDeliveryOfficeName}
               </span>
             </p>

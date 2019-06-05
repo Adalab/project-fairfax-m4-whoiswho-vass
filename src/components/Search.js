@@ -20,7 +20,7 @@ class Search extends React.Component {
       return (
         <div className="main__container">
           <header className="list__header">
-            <h1 className="list__title">VASS</h1>
+            <h1 className="list__tittle">VASS</h1>
             <div className="logout__container">
               <p className="logout">Salir</p>
               <img className="logout__arrow" src={logout} alt="" />
@@ -50,7 +50,7 @@ class Search extends React.Component {
       return (
         <div className="main__container">
           <header className="list__header">
-            <h1 className="list__title">VASS</h1>
+            <h1 className="list__tittle">VASS</h1>
             <div className="logout__container">
               <p className="logout">Salir</p>
               <img className="logout__arrow" src={logout} alt="" />
