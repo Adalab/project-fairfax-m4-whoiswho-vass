@@ -1,7 +1,6 @@
 import React from 'react';
 import Detail from './Detail';
 import PropTypes from 'prop-types';
-import logout from '../images/Salir.png';
 
 class Search extends React.Component {
   render() {
@@ -109,18 +108,6 @@ class Search extends React.Component {
           <div className="list__container">
             <ul className="employee__list">
               {nameArr
-                // .filter(item =>
-                //   `${item.givenName} ${item.sn}`
-                //     .toLocaleLowerCase()
-                //     .normalize('NFD')
-                //     .replace(/[\u0300-\u036f]/g, '')
-                //     .includes(
-                //       filterName
-                //         .toLocaleLowerCase()
-                //         .normalize('NFD')
-                //         .replace(/[\u0300-\u036f]/g, '')
-                //     )
-                // )
                 .map(item => (
                   <li
                     key={item.sAMAccountName}
@@ -173,7 +160,9 @@ Search.propTypes = {
   nameArr: PropTypes.arrayOf(PropTypes.object).isRequired,
   handleFilter: PropTypes.func.isRequired,
   handleCollapsible: PropTypes.func.isRequired,
-  collapsibleId: PropTypes.string
+  collapsibleId: PropTypes.string,
+  isErrorVisibleSearch: PropTypes.bool.isRequired,
+  handleLogout: PropTypes.func.isRequired
 };
 
 export default Search;
