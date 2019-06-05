@@ -5,16 +5,6 @@
   box-sizing: border-box;
 }
 
-.search__container {
-  min-height: 100vh;
-  min-width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: rgba(220, 241, 251, 0.5);
-}
-
 .list__header {
   height: rem(51);
   width: rem(320);
@@ -24,10 +14,6 @@
   padding: rem(8) rem(15) rem(13) rem(11);
   box-sizing: border-box;
   background-color: white;
-  @include mq($bp_desktop) {
-    width: 100%;
-    background-color: #0F2A62;
-  }
 }
 
 .list__title {
@@ -38,20 +24,6 @@
   overflow: hidden;
   background: url('./images/Logo_Search.png') no-repeat;
   background-size: rem(80);
-  @include mq($bp_desktop) {
-    background: url('./images/Logo_Search.png') no-repeat;
-    background-size: rem(80);
-  }
-}
-
-.list__greeting {
-  display: none;
-  @include mq($bp_desktop) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-  }
 }
 
 .logout__container {
@@ -71,7 +43,6 @@
   font-size: rem(14);
   display: inline;
   padding-top: rem(4);
-  cursor: pointer;
 }
 
 .logout-arrow {
@@ -80,7 +51,6 @@
   background: url('./images/Salir.png') no-repeat;
   background-size: cover;
   background-position: center;
-  cursor: pointer;
 }
 
 .main__container {

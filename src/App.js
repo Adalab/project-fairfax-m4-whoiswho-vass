@@ -112,7 +112,7 @@ class App extends React.Component {
       .then(response => response.json())
       .then(users => this.setState({ nameArr: users, isErrorVisibleSearch: false }))
       .catch(error => 
-        this.setState({isErrorVisibleSearch: true})
+        this.setState({isErrorVisibleSearch: true, nameArr: []})
       );
   }
 
