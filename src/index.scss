@@ -12,9 +12,12 @@
 }
 
 body {
-  background: url("./images/Background.png") no-repeat;
+  background: url("./images/Background.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-position: center;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 
 @font-face {
@@ -86,4 +89,3 @@ body {
   font-weight: normal;
   src: local("Myriad Pro Bold Condensed Italic"), url("./fonts/MYRIADPRO-BOLDCONDIT.woff") format("woff");
 }
-

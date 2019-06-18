@@ -89,9 +89,7 @@
   background-color: #50bbeb;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: flex-start;
-  text-align: center;
   @include mq($bp_desktop) {
     margin-top: rem(50);
     width: rem(900);
@@ -140,13 +138,13 @@
 .list__container {
   width: rem(320);
   overflow: scroll;
-  height: rem(600);
+  max-height: rem(600);
   padding: rem(0) rem(16);
   box-shadow: rem(0) rem(13) rem(14) rem(-7) rgb(230, 228, 228);
   background-color: #ffffff;
   @include mq($bp_desktop) {
     width: rem(900);
-    height: rem(400);
+    max-height: rem(400);
   }
 }
 
@@ -191,6 +189,7 @@
     width: rem(850);
     font-size: rem(15);
     padding: 0;
+    text-align: center;
   }
 }
 
